@@ -1,0 +1,70 @@
+﻿@model Model.EF.Tintuc
+@using Model.EF;
+@using Model.DAO;
+@using viettechnews.Common;
+
+@{
+    ViewBag.Title = "Detail_inFact";
+    Layout = "~/Views/Shared/_Layout_inFact.cshtml";
+
+    var cm = new Catkytu();
+}
+
+<section class="has-sidebar u-margin-t-40 u-padding-b-20">
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-8472502143736231",
+            enable_page_level_ads: true
+        });
+    </script>
+    <div class="container u-flex u-flex--content-center">
+        <div class="banner-item__inner">
+            <a href="https://www.google.com.vn/"><img class="img-crop_quangcao_long" src="~/Content/img/google-banner.png" alt=""></a>
+        </div>
+    </div>
+</section>
+
+<section class="has-sidebar u-margin-t-40 u-padding-b-20"></section>
+
+<div class="posts-box2 u-padding-b-0">
+    <div class="posts-box2__top">
+        <h4><span><a href="/"><i class="fa fa-home"> Home</i></a> &nbsp;&nbsp; <i class="fa fa-angle-double-right"></i> in Fact: All things in the world</span></h4>
+    </div>
+    <div class="col-lg-12 content-wrapper">
+        <div class="m-post-content m-post-content--van">
+            <div class="post-top">
+                <h2 class="post-title">@Model.Title</h2>
+                <div class="post-meta">
+                    <div class="item">
+                        <time datetime="2018-02-14 20:00"><i class="fa fa-clock-o"></i>@Model.CreateDate.Value.ToString("dddd, MMMM d, yyyy")  </time>
+                        &nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-eye"></i>@Model.ViewNo
+                    </div>                    
+                    <div class="item">
+                        <a class="social__twitter" href="https://twitter.com/share?text=@Model.Title&url=https://www.viettechnews.com/in-fact/@Model.BlogId/@cm.CvString(Model.Title)"><i class="fa fa-twitter"></i>Twitter</a>
+                    </div>
+                    <div class="item">
+                        <a class="social__facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://www.viettechnews.com/in-fact/@Model.BlogId/@cm.CvString(Model.Title)"><i class="fa fa-facebook"></i>Facebook</a>
+                    </div>
+                    <div class="item">
+                        <a class="social__google-plus" href="https://plus.google.com/share?url=https://www.viettechnews.com/in-fact/@Model.BlogId/@cm.CvString(Model.Title)"><i class="fa fa-google-plus"></i>Google Plus</a>
+                    </div>
+                </div>
+            </div>
+            <div class="entry-content">
+                <h3>@Model.Brief</h3>
+                <hr />
+                <p>@Html.Raw(Model.Content)</p>
+            </div>
+            <div class="post-share u-margin-t-40">
+                <h6>Share :</h6>
+                <div class="share-links social--color">
+                    <a class="social__facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://www.viettechnews.com/in-fact/@Model.BlogId/@cm.CvString(Model.Title)"><i class="fa fa-facebook" aria-hidden="true"></i><span>Facebook</span></a>
+                    <a class="social__google-plus" href="https://plus.google.com/share?url=https://www.viettechnews.com/in-fact/@Model.BlogId/@cm.CvString(Model.Title)"><i class="fa fa-google-plus" aria-hidden="true"></i><span>Google Plus</span></a>
+                    <a class="social__twitter" href="https://twitter.com/share?text=@Model.Title&url=https://www.viettechnews.com/in-fact/@Model.BlogId/@cm.CvString(Model.Title)"><i class="fa fa-twitter" aria-hidden="true"></i><span>Twitter</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

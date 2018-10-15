@@ -1,0 +1,44 @@
+﻿@using Model.DAO;
+@using Model.EF;
+@using viettechnews.Common;
+@{
+    var cm = new Catkytu();
+
+    ViewBag.tin1 = new TintucDao().ListTop1cm2();
+    var tin1s = (List<Model.EF.Tintuc>)ViewBag.tin1;
+
+}
+<div class="container">
+    <div class="u-flex u-flex--wrap n-margin-lr-3">
+        @foreach (var set1 in tin1s)
+        {
+            ViewBag.tendm = new DanhmucDao().ListDM_chuyenmuc(set1.CategoryChildId);
+            var dm = (List<Danhmuc>)ViewBag.tendm;
+            <article class="grid-item cat-health">
+                <figure>
+
+                    <img class="img-crop_slide1" src="@set1.Picture" alt="@set1.Title">
+
+                </figure>
+                <div class="thumb-content">
+                    <div class="post-cat">
+                        <ul>
+                            @foreach (var dms in dm)
+                            {
+                            <li><a>@dms.CategoryName</a></li>}
+                        </ul>
+                    </div>
+                    <h3 class="post-title">
+                        <a href="~/news/@set1.BlogId/@cm.CvString(set1.Title)">
+                            @cm.Limit(set1.Title, 70, "...")
+                        </a>
+                    </h3>
+                    <div class="post-meta">
+                        <time datetime="2018-02-14 20:00"><i class="fa fa-clock-o"></i>@set1.CreateDate.Value.ToString("d/M/yyyy HH:mm")  </time>
+                        &nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-eye"></i>@set1.ViewNo
+                    </div>
+                </div>
+            </article>
+        }
+    </div>
+</div>

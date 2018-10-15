@@ -1,0 +1,78 @@
+﻿@using Model.DAO;
+@using Model.EF;
+@using viettechnews.Common;
+
+@{
+    var cattech = (List<Model.EF.Danhmuc>)ViewBag.catCN;
+    var tintop4 = (List<Model.EF.Tintuc>)ViewBag.tinTop4;
+    var cm = new Catkytu();
+}
+
+<div class="posts-box has-cat cat-sports has-load-more">
+    @foreach (var catnm in cattech)
+    {
+        ViewBag.tintop1 = new TintucDao().Tinword(catnm.CategoryId);
+        var tincn1 = (List<Model.EF.Tintuc>)ViewBag.tintop1;
+
+        ViewBag.tintop2 = new TintucDao().Tinwordright(catnm.CategoryId);
+        var tincn2 = (List<Model.EF.Tintuc>)ViewBag.tintop2;
+
+        ViewBag.tintop3 = new TintucDao().Tincongnghe3(catnm.CategoryId);
+        var tincn3 = (List<Model.EF.Tintuc>)ViewBag.tintop3;
+
+        ViewBag.tintop4 = new TintucDao().Tincongnghe4(catnm.CategoryId);
+        var tincn4 = (List<Model.EF.Tintuc>)ViewBag.tintop4;
+
+        <div class="posts-box__top has-ajax-load">
+            <a href="~/tin-the-gioi" class="posts-box__top__title">@catnm.CategoryName</a>
+        </div>
+
+        <div class="posts-list has-post-in-left">
+            <article class="post-item">
+                @foreach (var settop in tincn1)
+                {
+                    <figure>
+                        <a href="~/news/@settop.BlogId/@cm.CvString(settop.Title)"><img class="img-crop" src="@settop.Picture" alt="@settop.Title"></a>
+                    </figure>
+                    <div class="post-content">
+                        <h4 class="post-title">
+                            <a href="~/news/@settop.BlogId/@cm.CvString(settop.Title)">
+                                @cm.Limit(settop.Title, 70, "...")
+                            </a>
+                        </h4>
+                        <div class="post-meta">
+                            <time datetime="2018-02-14 20:00"><i class="fa fa-clock-o"></i>@settop.CreateDate.Value.ToString("d/M/yyyy HH:mm")  </time>
+                            &nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-eye"></i>@settop.ViewNo
+                        </div>
+                        <p class="post-excerpt">
+                            @cm.Limit(settop.Brief, 135, "...")
+                        </p>
+                    </div>
+                }
+            </article>
+            @foreach (var set2 in tincn2)
+            {
+                <article class="post-item">
+
+                    <figure>
+                        <a href="~/news/@set2.BlogId/@cm.CvString(set2.Title)"><img class="img-crop_tincnright" src="@set2.Picture" alt="@set2.Title"></a>
+                    </figure>
+                    <div class="post-content">
+                        <h4 class="post-title">
+                            <a href="~/news/@set2.BlogId/@cm.CvString(set2.Title)">
+                                @cm.Limit(set2.Title, 80, "...")
+                            </a>
+                        </h4>
+                        <div class="post-meta">
+                            <time datetime="2018-02-14 20:00"><i class="fa fa-clock-o"></i>@set2.CreateDate.Value.ToString("d/M/yyyy HH:mm")  </time>
+                            &nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-eye"></i>@set2.ViewNo
+                        </div>
+                    </div>
+
+
+                </article>
+            }
+
+        </div><!--//.posts-list -->
+    }
+</div> <!--//.posts-box  -->

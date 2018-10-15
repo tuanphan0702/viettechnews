@@ -1,0 +1,28 @@
+﻿@using Model.DAO;
+@using Model.EF;
+@using viettechnews.Common;
+
+<div class="container">
+    <div class="header__breaking-news__inner">
+        <div class="inner__title">
+            <span>Tin thời sự:</span>
+        </div>
+        <div class="inner__carousel js-hot-posts owl-carousel">
+            @foreach (var item in Model)
+            {
+                var cm = new Catkytu();
+                ViewBag.catname = new DanhmucDao().ListDM_chuyenmuc(item.CategoryId);
+                var setcatid = (List<Model.EF.Danhmuc>)ViewBag.catname;
+                <div class="inner__carousel__item">
+                    @foreach (var set in setcatid)
+                    {
+                        <div class="item__category">@set.CategoryName : </div>
+                    }                    
+                    <div class="item__content">
+                        <span>@cm.Limit(item.Brief,100,"...")</span>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

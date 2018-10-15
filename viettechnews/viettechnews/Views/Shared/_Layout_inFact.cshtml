@@ -1,0 +1,263 @@
+﻿@model Model.EF.Tintuc
+@using Model.EF;
+@using Model.DAO;
+@using viettechnews.Common;
+
+
+@{
+    var cm = new Catkytu();
+
+    ViewBag.tintuc = new TintucDao().infact_detailnews();
+    var infact = (List<Tintuc>)ViewBag.tintuc;
+
+    ViewBag.tintop1 = new TintucDao().infact_list_top();
+    var infact_top = (List<Tintuc>)ViewBag.tintop1;
+
+    ViewBag.tinlist = new TintucDao().infact_list_tin();
+    var list = (List<Tintuc>)ViewBag.tinlist;
+}
+
+<!DOCTYPE html>
+<html class="html" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="~/iconnews.png" />
+    <title>Viet Tech News : inFact - @cm.Limit(Model.Title,70,"...")</title>
+    <meta name="description" content="viettechnews.com mang đến cho bạn thông tin về các sự kiện, câu chuyện, phân tích về Công nghệ, tin thế giới và đời sống hằng ngày. Tin tức luôn được cập nhật đầy đủ và chính xác nhất">
+    <meta name="keywords" content="Sự thật của thế giới, Trang tin về công nghệ và các vấn đề về cuộc sống,Tin nhanh,cập nhật,báo điện tử,việt báo,tin việt,VietNews,mua bán,rao vặt,tư vấn,việc làm,Hà Nội,Sài Gòn,tin tức,Huế,Đà Nẵng,VDC,Netnam,Saigonnet,Sggp,VET,Nhân dân,Lao động,Kinh tế,Kinh doanh,Tin nhanh,cap nhat,bao dien tu,Vietbao,TinViet,Mua Ban,Rao Vat,Tu Van,Viec Lam,Hanoi,Ha Noi,Saigon,Sai gon,Tin tuc,Tintuc,Hue,Da Nang,Danang,Nhandan,Nhan dan,Laodong,Lao dong,Kinhte,Kinh te,Kinhdoanh,Kinh doanh">
+
+    <!-- Google / Search Engine Tags -->
+    <meta itemprop="name" content="@cm.CvString(Model.Title)">
+    <meta itemprop="description" content="@cm.Limit(Model.Brief,158,"")">
+    <meta itemprop="image" content="@("https://www.viettechnews.com"+@Model.Picture)">
+
+    <!-- Google fonts -->
+    @*<link href="https://fonts.googleapis.com/css?family=Heebo:100,300,400,500,700,800,900" rel="stylesheet">*@
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,700,800" rel="stylesheet">
+    @*<link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,500' rel='stylesheet' type='text/css'>*@
+    <!-- inject:css -->
+    <link rel="stylesheet" href="~/Content/vendor/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="~/Content/vendor/owl.carousel2/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Content/vendor/owl.carousel2/owl.theme.default.css">
+    <link rel="stylesheet" href="~/Content/vendor/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="~/Content/vendor/custom-icon/style.css">
+    <link rel="stylesheet" href="~/Content/vendor/animate.css">
+    <link rel="stylesheet" href="~/Content/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/css/newstoday.min.css">
+    <link href="~/Content/vendor/bootstrap/css/tuanpda.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- endinject -->
+    <!-- inject:head:js -->
+    <script src="~/Content/vendor/modernizr-2.8.3.min.js"></script>
+    <!-- endinject -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126185577-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-126185577-1');
+    </script>
+
+    <!--Google Adsense-->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-8472502143736231",
+            enable_page_level_ads: true
+        });
+    </script>
+
+
+    <meta property="og:url" content="https://www.viettechnews.com/in-fact/@Model.BlogId/@cm.CvString(Model.Title)" />
+    <meta property="og:type" content="Article" />
+    <meta property="og:title" content="@Model.Title" />
+    <meta property="og:description" content="@cm.Limit(Model.Brief,158,"")" />
+    <link rel="image_src" href=@("https://www.viettechnews.com"+@Model.Picture)>
+    <meta property="og:image" content=@("https://www.viettechnews.com"+@Model.Picture) />
+</head>
+<body class="u-gray-bg">
+    <header class="header header--style-two">
+        <div class="headet__top">
+            <div class="container">
+                <div class="row u-flex--item-center">
+                    <div class="col-2">
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({
+                                google_ad_client: "ca-pub-8472502143736231",
+                                enable_page_level_ads: true
+                            });
+                        </script>
+                        <div class="aside-menubar">
+                            <div class="header__logo">
+                                <a href="~/in-fact"><img class="crop_infact_menu" src="~/Content/img/logo_left.jpg" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-8 text-center">
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({
+                                google_ad_client: "ca-pub-8472502143736231",
+                                enable_page_level_ads: true
+                            });
+                        </script>
+                        <div class="header__logo">
+                            <a href="~/in-fact"><img src="~/Content/img/infact.jpg" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                        <script>
+                            (adsbygoogle = window.adsbygoogle || []).push({
+                                google_ad_client: "ca-pub-8472502143736231",
+                                enable_page_level_ads: true
+                            });
+                        </script>
+                        <div class="aside-menubar">
+                            <div class="header__logo">
+                                <a href="~/in-fact"><img class="crop_infact_menu" src="~/Content/img/logo_right.jpg" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="header__nav d-none d-lg-block">
+            <div class="container text-center u-relative">
+                <div class="col-lg-2 col-6">
+                    <div class="site-logo">
+                        <a href="/"><img src="~/Content/img/logo_ws2.png" alt="Trang tin về công nghệ và cuộc sống"></a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section>
+        <div class="container">
+            @RenderBody()
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="posts-box2 u-padding-b-0">
+                <div class="posts-box2__top">
+                    @foreach (var tin in infact_top)
+                    {<h3><span>In Fact: @cm.Limit(tin.Title, 25, "...")</span></h3>}
+                </div>
+                <div class="video-player">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            <figure class="post-thumb">
+                                @foreach (var tin in infact_top)
+                                {<a href="~/in-fact/@tin.BlogId/@cm.CvString(tin.Title)"><img class="img-crop_infact_top1 img-thumbnail" src="@tin.Picture" alt="@tin.Title"></a>}
+                            </figure>
+                        </div><!--// col-8 end -->
+                        <div class="col-lg-4">
+                            <div class="video-player__play-list">
+                                <div class="play-list__header">
+                                    <h4><span>List Stories</span></h4>
+                                    <a href="" class="btn-subscription u-borderRadius4">in Fact - viettechnews</a>
+                                </div>
+                                <ul class="play-lists">
+                                    @foreach (var tin1 in list)
+                                    {
+                                        <li>
+                                            <figure class="video-thumb">
+                                                <a href="~/in-fact/@tin1.BlogId/@cm.CvString(tin1.Title)"><img class="img-crop_infact_list" src="@tin1.Picture" alt="@tin1.Title"></a>
+                                            </figure>
+                                            <div class="video-content">
+                                                <a href="~/in-fact/@tin1.BlogId/@cm.CvString(tin1.Title)"><h6>@cm.Limit(tin1.Title, 35, "...")</h6></a>
+                                            </div>
+                                        </li>
+                                    }
+                                </ul> <!--//playList__wrap end -->
+                            </div>
+                        </div><!--// col-4 end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="has-sidebar u-margin-t-40 u-padding-b-80"></section>
+
+    <footer class="footer">
+        <div class="footer__bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 u-sm-down-margin-b-30">
+                        <div class="site-logo">
+                            <a href="~/in-fact" class="img-crop_infact_menu_end"><img src="~/Content/img/logo_end.jpg" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="col-md-5 offset-md-1 u-sm-down-margin-b-30">
+                        <h6>viettechnews Luôn cố gắng mang đến cho bạn đọc những thông tin bổ ích nhất. in Fact là chuyên trang riêng dành cho những bạn thích tìm hiểu các thông tin khoa học và sự thật đã và đang diễn ra trên trái đất ...</h6>
+                    </div>
+                    <div class="col-md-2 offset-md-1">
+                        <ul class="social social--redius social--color">
+                            <li><a class="social__facebook" href=""><i class="fa fa-facebook"></i></a></li>
+                            <li><a class="social__twitter" href=""><i class="fa fa-twitter"></i></a></li>
+                            <li><a class="social__google-plus" href=""><i class="fa fa-google-plus"></i></a></li>
+                            <li><a class="social__linkedin" href=""><i class="fa fa-linkedin"></i></a></li>
+                            <li><a class="social__instagram" href=""><i class="fa fa-instagram"></i></a></li>
+                            <li><a class="social__dribbble" href=""><i class="fa fa-dribbble"></i></a></li>
+                            <li><a class="social__pinterest" href=""><i class="fa fa-pinterest"></i></a></li>
+                            <li><a class="social__behance" href=""><i class="fa fa-behance"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer__end footer__end--brand">
+            <div class="container">
+                <div class="row u-flex--item-center">
+                    <div class="col-md-5 u-sm-down-margin-b-15">
+                        <div class="footer__copyright">
+                            <p class="text-left">© 2018 The viettechnews Company</p>
+                        </div>
+                    </div>
+                    <div class="col-md-7">
+                        <nav class="footer__nav">
+                            <ul>
+                                <li><a href="#">Site Map</a></li>
+                                <li><a href="#">Privacy Policy </a></li>
+                                <li><a href="#">Copyright Policy </a></li>
+                                <li><a href="#">Your ad choices</a></li>
+                                <li><a href="#">Terms of Service</a></li>
+                                <li><a href="#">Subscription Terms</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- inject:js -->
+    <script src="~/Content/vendor/jquery/jquery-1.12.0.min.js"></script>
+    <script src="~/Content/vendor/bootstrap/js/popper.min.js"></script>
+    <script src="~/Content/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Content/vendor/owl.carousel2/owl.carousel.min.js"></script>
+    <script src="~/Content/vendor/sticky-kit/jquery.sticky-kit.js"></script>
+    <script src="~/Content/vendor/flexMenu-master/flexmenu.min.js"></script>
+    <script src="~/Content/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="~/Content/vendor/nicescroll-master/jquery.nicescroll.min.js"></script>
+    <script src="~/Content/js/newstoday.js"></script>
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
+    <!-- endinject -->
+</body>
+</html>
+
+
+
+
+
+
+
+

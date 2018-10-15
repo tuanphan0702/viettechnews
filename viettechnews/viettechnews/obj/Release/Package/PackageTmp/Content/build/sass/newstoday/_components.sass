@@ -1,0 +1,1586 @@
+//grid-item
+.grid-item
+    padding: 0 3px
+    flex: 0 0 50%
+    position: relative
+    overflow: hidden
+    &:before
+        content: ""
+        height: 100%
+        width: calc(100% - 6px)
+        background: linear-gradient(-180deg,transparent 50%,#000)
+        position: absolute
+        top: 0
+    figure
+        img
+            width: 100%
+    .thumb-content
+        position: absolute
+        z-index: 99
+        bottom: -30px
+        padding: 0 20px 20px
+        transition: .4s
+        +media-max(991px)
+            bottom: 0
+        .post-cat
+            transform: translateY(20px)
+            transition: .15s
+            opacity: 0
+            +media-max(991px)
+                display: none
+            ul
+                li
+                    a
+                        color: #fff
+                        background: $brand-color
+                        display: inline-block
+                        padding: 6px 10px
+                        border-radius: $base-border-radius
+                        font-size: 1rem
+                        line-height: 1
+        .post-title
+            margin-bottom: 0
+            margin-top: 10px
+            +media-max(991px)
+                font-size: 1.25rem!important
+            +media-max(767px)
+                overflow: hidden
+                height: 52px
+            a
+                color: #fff
+                &:hover
+                    color: $brand-color
+        .post-meta
+            color: #fff
+            opacity: 0
+            transition: .3s
+            +media-max(991px)
+                opacity: 1
+            i
+                margin-right: 8px
+            .post-comments
+                color: #fff
+                margin-left: 30px
+                &:hover
+                    color: $brand-color
+                +media-max(767px)
+                    display: none
+    &:nth-child(-n+3)
+        flex: 0 0 33.333%
+        margin-bottom: 6px
+        .post-title
+            font-size: 1.5rem
+    &:first-child
+        +media-minmax(576px,1200px)
+            display: none
+    &:hover
+        .post-meta
+            opacity: 1
+        .thumb-content
+            bottom: 0
+        .post-cat
+            transform: translateY(0px)
+            opacity: 1
+            transition: .3s
+    +media-max(575px)
+        flex: 1 0 100%!important
+        margin-bottom: 10px!important
+    +media-minmax(576px,1200px)
+        flex: 1 0 50%!important
+
+
+
+//post box
+.posts-box__top
+    display: flex
+    position: relative
+    height: 50px
+    align-items: center
+    border: 1px solid #eae9e9
+    border-left: 3px solid $brand-color
+    &--auto-hight
+        height: auto
+        div
+            padding: 30px 20px
+        h3
+            margin-bottom: 5px
+        p
+            margin: 0
+.posts-box__top__title
+    margin: 0
+    padding-left: 20px
+    flex: 0 0 auto
+    max-width: calc(100% - 100px)
+.posts-box__category
+    flex-grow: 1
+    width: 100%
+    ul
+        padding-right: 20px
+        li
+            display: inline-block
+            margin-left: 18px
+            a
+                color: $gray
+                font-family: Heebo
+                font-size: .875rem
+                &:hover
+                    color: $brand-color
+            &.active
+                a
+                    color: $brand-color
+    &.no-pad
+        ul
+            padding-right: 0
+.posts-box__bottom__load-more
+    display: flex
+    align-items: center
+    height: 50px
+    justify-content: center
+    border: 1px solid #eae9e9
+    border-top: 0px
+    a
+        display: inline-block
+        color: #6d6d6d
+        font-family: Heebo
+        font-size: 1.125rem
+        &:hover
+            color: $brand-color
+.flex-menu-parent
+    width: 100%
+    display: flex
+    justify-content: flex-end
+    align-items: flex-start
+
+
+//post-box2
+.posts-box2
+    background: #fff
+    border-radius: $base-border-radius
+.single-item
+    .posts-box2__top
+        padding: 0 20px
+.posts-box2__top
+    padding: 0 30px
+    display: flex
+    align-items: center
+    &.no-pad
+        padding: 0
+    h3
+        border-bottom: 1px solid #e3e3e3
+        margin: 0
+        height: 60px
+        line-height: 60px
+        width: 100%
+        padding-top: 5px
+        span
+            display: inline-block
+            position: relative
+            &:before
+                content: ""
+                width: 100%
+                height: 1px
+                background: $brand-color
+                left: 0
+                bottom: 5px
+                position: absolute
+    h4
+        border-bottom: 1px solid #e3e3e3
+        margin: 0
+        height: 60px
+        line-height: 60px
+        width: 100%
+        padding-top: 5px
+        span
+            display: inline-block
+            position: relative
+            &:before
+                content: ""
+                width: 100%
+                height: 1px
+                background: $brand-color
+                left: 0
+                bottom: 5px
+                position: absolute
+
+//post box3
+.posts-box3__top
+    display: flex
+    align-items: center
+    justify-content: space-between
+    border-bottom: 1px solid #e3e3e3
+    h4
+        max-width: calc(100% - 100px)
+        margin: 0
+        flex: 0 0 auto
+        height: 40px
+        span
+            display: inline-block
+            position: relative
+            padding-top: 5px
+            +media-max(767px)
+                padding-top: 8px
+            &:before
+                content: ""
+                width: 100%
+                height: 1px
+                background: $brand-color
+                left: 0
+                bottom: -10px
+                position: absolute
+    h3
+        max-width: calc(100% - 100px)
+        margin: 0
+        flex: 0 0 auto
+        height: 40px
+        span
+            display: inline-block
+            position: relative
+            +media-max(767px)
+                padding-top: 5px
+            &:before
+                content: ""
+                width: 100%
+                height: 1px
+                background: $brand-color
+                left: 0
+                bottom: -10px
+                position: absolute
+
+// posts-list
+.posts-list
+    &.has-style-1
+        display: flex
+        padding-right: 5px
+        padding-left: 5px
+        border: 1px solid #eae9e9
+        border-top: 0
+        padding-top: 30px
+        flex-wrap: wrap
+        .post-item
+            flex: 0 0 50%
+            padding-right: 15px
+            padding-left: 15px
+            margin-bottom: 40px
+            +media-max(575px)
+                flex: 0 0 100%
+        .post-meta
+            margin-bottom: 15px
+        .post-comments
+            &:hover
+                color: $brand-color
+            +media-max(400px)
+                display: none
+            +media-minmax(575px,767px)
+                display: none
+            +media-minmax(991px,1230px)
+                display: none
+    &.has-post-in-left
+        padding-top: 30px
+        border: 1px solid #eae9e9
+        border-top: 0
+        padding-left: 5px
+        padding-right: 5px
+        .post-item
+            display: inline-block
+            width: 50%
+            padding-right: 15px
+            padding-left: 15px
+            +media-max(767px)
+                width: 100%!important
+            &:first-child
+                float: left
+                width: 50%
+                +media-max(767px)
+                    margin-bottom: 30px
+                .post-title
+                    margin-top: 15px
+                .post-meta
+                    margin-bottom: 10px
+                .post-comments
+                    &:hover
+                        color: $brand-color
+                    +media-max(575px)
+                        display: none
+            &:nth-child(n+2)
+                display: flex
+                margin-bottom: 30px
+                figure
+                    flex: 0 0 100px
+                    margin-right: 20px
+                    +media-max(575px)
+                        flex: 0 0 70px
+                .post-title
+                    font-size: 16px
+                    +media-max(575px)
+                        overflow: hidden
+                        max-height: 60px
+
+    &.has-video-box
+        padding-top: 30px
+        border: 1px solid #eae9e9
+        border-top: 0
+        display: flex
+        padding-left: 5px
+        padding-right: 5px
+        padding-bottom: 40px
+        flex-wrap: wrap
+        +media-max(767px)
+            padding-bottom: 0
+        .post-item
+            flex: 0 0 33.333%
+            padding-left: 15px
+            padding-right: 15px
+            position: relative
+            overflow: hidden
+            +media-max(767px)
+                flex: 0 0 100%
+                margin-bottom: 30px
+            &:before
+                position: absolute
+                top: 0
+                width: -webkit-calc(100% - 6px)
+                width: calc(100% - 30px)
+                height: 100%
+                content: ""
+                background: linear-gradient(-180deg,transparent 50%,#000)
+                left: 15px
+                z-index: 1
+                pointer-events: none
+            figure
+                a
+                    display: block
+                    position: relative
+                    &:hover
+                        &:after
+                            color: $brand-color
+                    &:after
+                        content: "\f144"
+                        font-family: Fontawesome
+                        position: absolute
+                        color: #fff
+                        z-index: 99999
+                        top: 0
+                        font-size: 45px
+                        height: 50px
+                        width: 50px
+                        text-align: center
+                        line-height: 50px
+                        bottom: 0
+                        left: 0
+                        right: 0
+                        margin: auto
+                        transition: .3s
+            .post-content
+                position: absolute
+                bottom: -35px
+                left: 15px
+                width: calc(100% - 30px)
+                padding-left: 20px
+                padding-right: 20px
+                padding-bottom: 20px
+                transition: .4s
+                z-index: 9999
+                +media-minmax(768px,991px)
+                    display: none
+                +media-max(575px)
+                    bottom: 0
+                .post-title
+                    a
+                        color: #fff
+                        &:hover
+                            color: $brand-color
+                    +media-max(575px)
+                        max-height: 43px
+                        overflow: hidden
+                    +media-minmax(991px,1230px)
+                        max-height: 50px
+                        overflow: hidden
+                .post-meta
+                    color: #fff
+                    opacity: 0
+                    transition: .3s
+                    +media-max(575px)
+                        display: none
+            &:hover
+                .post-content
+                    bottom: 0px
+                .post-meta
+                    opacity: 1
+    &.has-big-in-top
+        padding-top: 30px
+        padding-right: 20px
+        padding-left: 20px
+        border: 1px solid #eae9e9
+        border-top: 0
+        .post-item
+            &:first-child
+                border-bottom: 1px solid #eae9e9
+                margin-bottom: 30px
+                padding-bottom: 27px
+                .post-title
+                    margin-top: 15px
+                .post-meta
+                    margin-bottom: 10px
+                .post-comments
+                    +media-max(575px)
+                    display: none
+            &:nth-last-child(-n+3)
+                display: flex
+                margin-bottom: 30px
+                figure
+                    flex: 0 0 80px
+                    margin-right: 20px
+                    +media-max(575px)
+                        flex: 0 0 70px
+                        margin-right: 15px
+                .post-title
+                    font-size: 16px
+                    +media-max(575px)
+                        max-height: 60px
+                        overflow: hidden
+                .post-meta
+                    line-height: 1
+    &.has-big-in-top-alt
+        padding: 30px 20px
+        .post-item
+            img
+                border-radius: $base-border-radius
+            &:first-child
+                border-bottom: 1px solid #eae9e9
+                margin-bottom: 30px
+                padding-bottom: 27px
+                .post-title
+                    margin-top: 5px
+                .post-meta
+                    margin-top: 15px
+            &:nth-last-child(-n+3)
+                display: flex
+                margin-bottom: 30px
+                figure
+                    flex: 0 0 80px
+                    margin-right: 20px
+                .post-title
+                    font-size: 16px
+                    margin-bottom: 0
+                .post-meta
+                    line-height: 1
+                    margin-bottom: 10px
+            &:last-child
+                margin-bottom: 0
+    &.has-big-in-top-trns
+        padding-top: 30px
+        .post-meta
+            line-height: 1
+            color: rgba($brand-color,.75)
+            a
+                color: rgba($brand-color,.75)
+                &:hover
+                    color: $brand-color
+        .post-auth
+            margin-right: 10px
+        .post-item
+            &:first-child
+                border-bottom: 1px solid #eae9e9
+                margin-bottom: 30px
+                padding-bottom: 25px
+                .post-meta
+                    margin-top: 20px
+                    margin-bottom: 10px
+
+            &:nth-last-child(-n+3)
+                display: flex
+                margin-bottom: 30px
+                figure
+                    flex: 0 0 80px
+                    margin-right: 20px
+                .post-title
+                    font-size: 16px
+                    margin-bottom: 0
+                .post-meta
+                    line-height: 1
+                    margin-bottom: 10px
+                time
+                    +media-max(575px)
+                        display: none
+                    +media-minmax(991px,1230px)
+                        display: none
+            &:last-child
+                margin-bottom: 0
+    &.mega-posts
+        padding-top: 30px
+        border: 1px solid #eae9e9
+        border-top: 0
+        padding-left: 5px
+        padding-right: 5px
+        +clear
+        .post-item
+            float: left
+            width: 50%
+            padding-left: 15px
+            padding-right: 15px
+            &:nth-child(4)
+                .wrap
+                    border-bottom: 1px solid #eae9e9
+                    padding-bottom: 30px
+            &:first-child
+                margin-bottom: 20px
+                .wrap
+                    border-bottom: 1px solid #eae9e9
+                    padding-bottom: 30px
+                .post-title
+                    margin-top: 12px
+                .post-meta
+                    margin-bottom: 15px
+                .post-comments
+                    &:hover
+                        color: $brand-color
+                    +media-max(575px)
+                        display: none
+            &:nth-child(n+2):nth-child(-n+4)
+                margin-bottom: 30px
+                .wrap
+                    display: flex
+                figure
+                    flex: 0 0 100px
+                    margin-right: 20px
+                    +media-max(575px)
+                        flex: 0 0 70px
+                        margin-right: 15px
+                .post-title
+                    font-size: 16px
+                    +media-max(575px)
+                        max-height: 60px
+                        overflow: hidden
+                    +media-minmax(767px,1230px)
+                        height: 60px
+                        overflow: hidden
+            &:nth-child(n+5):nth-child(-n+10)
+                margin-bottom: 30px
+                .post-title
+                    font-size: 18px
+            +media-max(767px)
+                width: 100%
+.posts-list-big-first
+    padding: 30px 30px 0
+    .post-item
+        position: relative
+        border-radius: $base-border-radius
+        overflow: hidden
+        margin-bottom: 30px
+        .post-content
+            margin-top: 12px
+            .post-meta
+                margin-bottom: 4px
+            h5
+                font-weight: 400
+                margin-bottom: 5px
+    article
+        &:first-child
+            .post-item
+                &:before
+                    position: absolute
+                    z-index: 1
+                    top: 0
+                    left: 0
+                    width: 100%
+                    height: 100%
+                    content: ""
+                    pointer-events: none
+                    background: linear-gradient(-180deg,transparent 50%,#000)
+            .post-content
+                position: absolute
+                z-index: 9999
+                bottom: 0
+                left: 0
+                padding: 0 15px 20px
+                width: 100%
+                h5
+                    margin-bottom: 0
+                    letter-spacing: .3px
+                a
+                    color: #fff
+                    &:hover
+                        color: $brand-color
+                time
+                    color: #fff
+                    font-weight: 400
+
+.posts-list-one-half
+    padding: 30px 30px 0
+    .post-item
+        position: relative
+        border-radius: $base-border-radius
+        overflow: hidden
+        margin-bottom: 30px
+        .post-content
+            margin-top: 12px
+            .post-meta
+                margin-bottom: 4px
+            h5
+                font-weight: 400
+                margin-bottom: 10px
+.dual-col-posts
+    display: flex
+    flex-wrap: wrap
+    .posts-list
+        flex: 0 0 50%
+        +media-max(767px)
+            flex: 0 0 100%
+        &:first-child
+            border-right: 0
+            +media-max(767px)
+                border-right: 1px solid $border-color
+        &:last-child
+            border-left: 0
+            +media-max(767px)
+                border-left: 1px solid $border-color
+
+
+.posts-list-fluid-first
+    display: flex
+    flex-wrap: wrap
+    padding: 30px 15px
+    .post-item
+        flex: 0 0 50%
+        padding: 0 15px
+        margin-bottom: 20px
+        +media-max(575px)
+            flex: 0 0 100%
+        .post-item__inner
+            border-bottom: 1px solid $border-color
+            padding-bottom: 25px
+        .post-meta
+            margin-bottom: 12px
+        &:first-child
+            flex: 0 0 100%
+            .post-item__inner
+                display: flex
+                +media-max(767px)
+                    flex-wrap: wrap
+            figure
+                flex: 0 0 340px
+                margin-right: 30px
+                +media-max(767px)
+                    flex: 0 0 100%
+                    margin-right: 0
+                    margin-bottom: 10px
+                +media-minmax(678px,1230px)
+                    flex: 0 0 260px
+            .post-meta
+                +media-minmax(678px,1230px)
+                    display: none
+            .post-excerpt
+                +media-minmax(678px,1230px)
+                    max-height: 80px
+                    overflow: hidden
+        &:nth-last-child(-n+4)
+            .post-item__bottom
+                display: flex
+                +media-max(767px)
+                    flex-wrap: wrap
+                figure
+                    flex: 0 0 120px
+                    margin-right: 20px
+                    +media-max(767px)
+                        flex: 0 0 100%
+                        margin-bottom: 10px
+                    +media-minmax(678px,1230px)
+                        flex: 0 0 80px
+            h5
+                margin-bottom: 16px
+                +media-minmax(678px,1230px)
+                    overflow: hidden
+                    max-height: 40px
+            .post-excerpt
+                +media-minmax(678px,1230px)
+                    max-height: 80px
+                    overflow: hidden
+        &:nth-last-child(-n+2)
+            margin-bottom: 0
+            .post-item__inner
+                border-bottom: 0
+                padding-bottom: 0
+
+
+.posts-list-fluid-first-alt
+    display: flex
+    flex-wrap: wrap
+    padding: 30px 15px 40px
+    .post-item
+        flex: 0 0 50%
+        padding: 0 15px
+        margin-bottom: 25px
+        +media-max(767px)
+            flex:  0 0 100%
+        .post-meta
+            margin-bottom: 8px
+            margin-top: 15px
+        &:first-child
+            flex: 0 0 100%
+            .post-item__inner
+                border-bottom: 1px solid $border-color
+                padding-bottom: 18px
+        &:nth-last-child(-n+4)
+            margin-bottom: 40px
+            .post-item__bottom
+                display: flex
+                figure
+                    flex: 0 0 120px
+                    margin-right: 20px
+        &:nth-last-child(-n+2)
+            +media-min(768px)
+                margin-bottom: 0
+            .post-item__inner
+                border-bottom: 0
+                padding-bottom: 0
+        &:last-child
+            margin-bottom: 0
+
+
+.post-item
+    figure
+        a
+            img
+                width: 100%
+    .post-category
+        padding-top: 25px
+        padding-bottom: 10px
+        ul
+            li
+                display: inline-block
+                a
+                    display: inline-block
+                    height: 30px
+                    padding: 0 14px
+                    background: $brand-color
+                    line-height: 30px
+                    color: #fff
+                    font-size: 1rem
+                    font-family: Heebo
+                    border-radius: $base-border-radius
+    .post-meta
+        color: #909090
+        i
+            margin-right: 8px
+        .post-comments
+            color: #909090
+            margin-left: 30px
+    .post-excerpt
+        margin-bottom: 0
+    .post-title
+        margin-bottom: 5px
+        letter-spacing: .2px
+
+
+.posts-has-top-thumb
+    .post-item
+        border-bottom: 1px solid #cccccc
+        padding-bottom: 30px
+        margin-bottom: 30px
+        &:last-child
+            margin-bottom: 0
+            border-bottom: 0
+            padding-bottom: 0
+    .post-meta
+        margin-top: 20px
+        line-height: 1
+        margin-bottom: 10px
+        .item
+            color: rgba($brand-color,.75)
+            display: inline-block
+            margin-right: 25px
+            a
+                color: rgba($brand-color,.75)
+                &:hover
+                    color: $brand-color
+            ul
+                display: inline-block
+            li
+                display: inline-block
+                margin-left: -4px
+            &:last-child
+                +media-max(480px)
+                    display: none
+
+
+.posts-list-img-top
+    display: flex
+    margin-left: -15px
+    margin-right: -15px
+    flex-wrap: wrap
+    .post-item
+        flex: 0 0 25%
+        padding: 0 15px
+        +media-minmax(576px,1230px)
+            flex: 0 0 50%
+        +media-max(575px)
+            flex: 0 0 100%
+        &:nth-last-child(-n+2)
+            +media-max(1230px)
+                margin-top: 30px
+        &:first-child
+            +media-max(575px)
+                margin-bottom: 30px
+    .post-content
+        margin-top: 20px
+    .post-title
+        font-weight: 400
+        margin-top: 10px
+    .post-meta
+        color: rgba($brand-color,.75)
+        line-height: 1
+    .post-cat
+        display: inline-block
+        padding-left: 15px
+        ul
+            display: inline-block
+            margin-left: -5px
+            li
+                display: inline-block
+                a
+                    color: rgba($brand-color,.75)
+                    &:hover
+                        color: $brand-color
+
+
+.has-post-block
+    display: flex
+    flex-wrap: wrap
+    margin-right: -15px
+    margin-left: -15px
+    padding-top: 30px
+    .post-item
+        flex: 0 0 50%
+        padding-left: 15px
+        padding-right: 15px
+        margin-bottom: 35px
+        +media-max(575px)
+            flex: 0 0 100%
+        &:nth-last-child(-n+2)
+            +media-min(576px)
+                margin-bottom: 0
+        &:last-child
+            margin-bottom: 0!important
+    .post-title
+        margin-bottom: 10px
+    .post-meta
+        color: rgba($brand-color,.75)
+        line-height: 1
+        margin-top: 20px
+        margin-bottom: 10px
+        a
+            color: rgba($brand-color,.75)
+            &:hover
+                color: $brand-color
+    time
+        margin-left: 15px
+        +media-minmax(576px,767px)
+            display: none
+
+
+.archive-posts
+    padding-top: 30px
+    .post-item
+        display: flex
+        margin-bottom: 30px
+        +media-max(575px)
+            flex-wrap: wrap
+        &:last-child
+            margin-bottom: 0
+        figure
+            flex: 0 0 170px
+            margin-right: 20px
+            +media-max(400px)
+                flex: 0 0 100%
+    .post-title
+        +media-minmax(576px,767px)
+            max-height: 55px
+            overflow: hidden
+    .post-excerpt
+        +media-minmax(576px,767px)
+            max-height: 105px
+            overflow: hidden
+    .post-content
+        +media-max(575px)
+            flex: 0 0 100%
+            margin-top: 15px
+    .post-meta
+        line-height: 1
+        margin-bottom: 10px
+        .item
+            color: $brand-color
+            display: inline-block
+            margin-right: 25px
+            a
+                color: $brand-color
+            ul
+                display: inline-block
+            li
+                display: inline-block
+                margin-left: -4px
+            &:last-child
+                +media-max(767px)
+                    display: none
+
+
+//buttons
+.c-btn
+    cursor: pointer
+    border: 0
+    border-radius: $base-border-radius
+    &--solid
+        font-size: 1rem
+        padding: 0 1.75rem
+        height: 45px
+        color: #fff
+        transition: .3s
+        &:hover
+            opacity: .7
+    &--color-brand
+        background: $brand-color
+        color: #fff
+
+
+// inputs
+.c-input
+    &--radio
+.radio
+    margin: 0.5rem;
+    label
+        padding-left: 25px
+        position: relative
+    input[type="radio"]
+        position: absolute
+        opacity: 0
+        + .radio-label
+            &:before
+                content: ''
+                border-radius: 100%
+                border: 1px solid #717171
+                display: inline-block
+                width: 14px
+                height: 14px
+                position: absolute
+                top: 4px
+                left: 0
+                margin-right: 1em;
+                vertical-align: top;
+                cursor: pointer;
+                text-align: center;
+                transition: all 250ms ease;
+
+
+        &:checked
+            + .radio-label
+                &:before
+                    box-shadow: inset 0 0 0 3px #fff
+                    background: $brand-color
+
+
+
+        &:focus
+            + .radio-label
+                &:before
+                    outline: none
+                    border-color: $brand-color
+
+
+        &:disabled
+            + .radio-label
+                &:before
+                    box-shadow: inset 0 0 0 4px red
+                    border-color: darken(red, 25%)
+                    background: darken(red, 25%)
+
+
+        + .radio-label
+            &:empty
+                &:before
+                    margin-right: 0;
+
+
+//video player
+.video-player
+    background: #fff
+    padding: 30px
+.video-player__frame
+    height: 100%
+    border-radius: 6px
+    overflow: hidden
+    +media-minmax(400px,991px)
+        height: 240px
+    iframe
+        width: 100%
+        height: 100%
+        border: 0
+.video-player__play-list
+    position: relative
+    &:before
+        position: absolute;
+        top: 0;
+        width: 100%
+        height: 100%
+        content: ""
+        background: linear-gradient(192deg,transparent 77%,#fff)
+        z-index: 99999
+        pointer-events: none
+    .play-list__header
+        border-bottom: 1px solid #e3e3e3
+        padding-bottom: 14px
+        display: flex
+        justify-content: space-between
+        +media-max(991px)
+            margin-top: 25px
+        h4
+            margin: 0
+            line-height: 32px
+            position: relative
+            &:before
+                content: ''
+                position: absolute
+                height: 1px
+                width: 100%
+                background: $brand-color
+                bottom: -15px
+                left: 0
+        .btn-subscription
+            color: #fff
+            height: 32px
+            font-size: 14px
+            line-height: 32px
+            padding: 0 17px
+            display: inline-block
+            background: $brand-color
+            text-transform: uppercase
+            border-radius: $base-border-radius
+            letter-spacing: .3px
+            +media-max(400px)
+                padding: 0 10px
+                font-size: 12px
+                height: 28px
+                line-height: 28px
+            &:hover
+                opacity: .7
+
+    .play-lists
+        height: 370px
+        overflow-y: scroll
+        padding-right: 15px
+        width: 100%
+        padding-top: 20px
+        position: relative
+        li
+            margin-bottom: 20px
+            display: flex
+            &:last-child
+                margin-bottom: 0
+            .video-thumb
+                flex: 0 0 100px
+                margin-right: 20px
+                +media-max(575px)
+                    flex: 0 0 70px
+                    margin-right: 15px
+            .video-content
+                h6
+                    margin-top: -2px
+                    margin-bottom: 3px
+                    +media-max(575px)
+                        overflow: hidden
+                        max-height: 40px
+                    a
+                        &:hover
+                            color: $brand-color
+                .date
+                    display: block
+                    color: #8d8d8d
+                    font-size: 0.9375rem
+
+
+// owl nav
+.owl-nav
+    div
+        height: 30px
+        width: 30px
+        border: 1px solid #dbdbdb
+        line-height: 26px
+        color: #dbdbdb
+        font-size: 22px
+        text-align: center
+        background: #fff
+        border-radius: 3px
+        position: absolute
+        transition: .4s
+        &:hover
+            color: $brand-color
+            border: 1px solid $brand-color
+.has-play-icon
+    position: relative
+    &:before
+        position: absolute
+        z-index: 99999
+        top: 0
+        right: 0
+        bottom: 0
+        left: 0
+        width: 50px
+        height: 50px
+        margin: auto
+        content: "\f144"
+        -webkit-transition: .3s
+        transition: .3s
+        text-align: center
+        color: #fff
+        font-family: Fontawesome
+        font-size: 40px
+        line-height: 50px
+    &:hover
+        &:before
+            color: $brand-color
+.has-ajax-load
+    position: relative
+.ajax-load-btns
+    button
+        height: 28px
+        width: 28px
+        border: 1px solid #dbdbdb
+        line-height: 23px
+        color: #dbdbdb
+        font-size: 22px
+        text-align: center
+        background: #fff
+        border-radius: 3px
+        position: absolute
+        transition: .4s
+        cursor: pointer
+        &:hover
+            color: #fff
+            border: 1px solid $brand-color
+            background: $brand-color
+    .prev
+        bottom: 10px
+        right: 15px
+    .next
+        bottom: 10px
+        right: 55px
+    &--alt
+        .prev
+            bottom: 10px
+            right: 0
+        .next
+            bottom: 10px
+            right: 40px
+
+
+//call to action
+.call-to-action
+    background-image:  url(../img/pattern.png)
+    background-color: #007bff
+    .content-h
+        h2
+            color: #fff
+            margin-bottom: 5px
+        h4
+            color: #fff
+            font-weight: 400
+            margin-bottom: 0
+    .app-list
+        li
+            display: inline-block
+            transition: .3s
+            border-radius: 3px
+            overflow: hidden
+            box-shadow: 2px 2px 51px 0 rgba(31,28,38,.15)
+            &:hover
+                transform: translateY(-2px)
+                box-shadow: 2px 2px 51px 0 rgba(31,28,38,.35)
+            a
+                display: flex
+                padding: 15px 30px
+                align-items: center
+                +media-max(575px)
+                    padding: 15px
+            .icon
+                margin-right: 15px
+                +media-max(575px)
+                    margin-right: 0
+            .text
+                p
+                    color: #fff
+                    margin-bottom: 0
+                h3
+                    color: #fff
+                    margin-bottom: 0
+                +media-max(575px)
+                    display: none
+
+            &.ios
+                background: #3395ff
+                margin-right: 45px
+                +media-max(575px)
+                    margin-right: 15px
+            &.md
+                background: #14b4b8
+
+//social--color
+.social--color
+    .social__facebook
+        background-color: $color-facebook
+    .social__twitter
+        background-color: $color-twitter
+    .social__google-plus
+        background-color: $color-google-plus
+    .social__linkedin
+        background-color: $color-linkedin
+    .social__instagram
+        background-color: $color-instagram
+    .social__dribbble
+        background: $color-dribbble
+    .social__pinterest
+        background: $color-pinterest
+    .social__behance
+        background: $color-behance
+    .social__youtube
+        background: $color-youtube
+    .social__soundcloud
+        background: $color-soundcloud
+    .social__vimeo
+        background: $color-vimeo
+
+.social--circle
+    li
+        a
+            border-radius: 50%
+            display: inline-block
+.social--redius
+    li
+        a
+            border-radius: 3px
+            display: inline-block
+
+//flex menu style
+.js .menu
+    height: 1.5em
+    overflow: hidden
+.flexMenu-viewMore.active > a, .flexMenu-viewMore > a:hover
+    color: $brand-color
+.flexMenu-popup
+    z-index: 999999
+    top: 40px
+    right: 15px
+    padding: 20px 0
+    text-align: left
+    background: #fff
+    box-shadow: 0 0 15px 0 rgba(31,28,38,.1)
+    &:before
+        background: transparent
+        content: ''
+        position: absolute
+        height: 20px
+        width: 60px
+        top: -10px
+        right: 0
+        cursor: pointer
+.flexMenu-popup li
+    display: block!important
+    margin: 0!important
+.flexMenu-popup a
+    display: block
+    padding: 0 30px
+    font-size: 15px
+    font-weight: 400
+    line-height: 28px
+    color: #717171!important
+.flexMenu-popup a:hover
+    color: $brand-color!important
+
+
+//user modal
+.user-modal
+    .modal-header
+        height: 50px
+        display: flex
+        align-items: center
+        border-left: 4px solid $brand-color
+        padding-left: 36px
+        border-bottom: 1px solid #eae9e9
+        .modal-close
+            border: 0
+            background: #fff
+            height: 30px
+            width: 30px
+            position: absolute
+            right: 0
+            font-size: 12px
+            line-height: 31px
+            top: 0
+            cursor: pointer
+            &:hover
+                color: $brand-color
+
+        h4
+            margin: 0
+            font-weight: 400
+    .modal-body
+        padding: 40px 40px
+        +media-max(600px)
+            padding: 30px 20px
+    .social-login
+        display: flex
+        margin: 0 -15px
+        li
+            flex: 0 0 50%
+            padding: 0 15px
+            a
+                border-radius: 3px
+                display: block
+                color: #fff
+                height: 44px
+                line-height: 44px
+                text-align: center
+                text-transform: uppercase
+                +media-max(480px)
+                    font-size: 14px
+                i
+                    margin-right: 8px
+                &.btn-fb
+                    background: $color-facebook
+                &.btn-gle-pl
+                    background: $color-google-plus
+                &:hover
+                    opacity: .7
+    .devider
+        position: relative
+        margin: 30px 0
+        text-align: center
+        font-size: 24px
+        line-height: 1
+        span
+            background: #fff
+            display: inline-block
+            padding: 0 10px
+            position: relative
+            z-index: 9999
+        &:after
+            content: ""
+            position: absolute
+            height: 1px
+            width: 100%
+            background: #eae9e9
+            left: 0
+            top: 15px
+    .form-group
+        a
+            color: #909090
+            font-size: .875rem
+            &:hover
+                color: $brand-color
+
+
+//load-more
+.load-more
+    text-align: center
+    a
+        display: inline-block
+        height: 46px
+        color: #fff
+        padding: 0 30px
+        background: #42434c
+        line-height: 46px
+        text-transform: uppercase
+        border-radius: $base-border-radius
+        font-size: 14px
+        &:hover
+            opacity: .7
+
+
+
+//modal
+.modal-backdrop
+    background-color: #172430
+    &.show
+        opacity: .85
+.modal-content
+    border-radius: 0
+.modal-header
+    border-radius: 0
+
+//inputs
+.form-control
+    font-size: 1rem
+    border: 1px solid #ccc
+    border-radius: 0
+    padding: 0 10px
+    &:focus
+        background-color: #fff
+        border-color: $brand-color
+        outline: 0
+        box-shadow: none
+    &:-webkit-autofill
+        background: #fff
+
+.custom-control-input:focus~.custom-control-label::before
+    box-shadow: none
+.custom-checkbox .custom-control-label::before
+    background: transparent;
+    border: 1px solid #ddd;
+input
+    &.form-control
+        height: 44px
+textarea
+    &.form-control
+        padding: 10px
+
+//breadcrumbs
+.breadcrumbs-area
+    height: 70px
+    display: flex
+    align-items: center
+    &--light
+        background: #f6f6f6
+    &--dark
+        background: #eee
+.breadcrumbs
+    span
+        color: #909090
+        font-weight: 400
+        font-family: Heebo
+        a
+            color: $dark
+            &:hover
+                color: $brand-color
+
+// popup zoom
+.mfp-with-zoom .mfp-container,
+.mfp-with-zoom.mfp-bg
+    opacity: 0
+    transition: all 0.3s ease-out
+.mfp-with-zoom.mfp-ready .mfp-container
+    opacity: 1
+.mfp-with-zoom.mfp-ready.mfp-bg
+    opacity: 0.8
+.mfp-with-zoom.mfp-removing .mfp-container,
+.mfp-with-zoom.mfp-removing.mfp-bg
+    opacity: 0
+
+// zoom gallery
+.zoom-gallery
+    a
+        display: block
+        position: relative
+        &:after
+            content: ''
+            height: 100%
+            width: 100%
+            background: $brand-color
+            top: 0
+            left: 0
+            z-index: 999
+            position: absolute
+            opacity: 0
+            transition: .3s
+        &:before
+            content: url(../img/icon/popup.png)
+            position: absolute
+            z-index: 9999
+            top: 50%
+            left: 50%
+            transition: .3s
+            opacity: 0
+            transform: translateX(-50%)translateY(-50%)
+        &:hover
+            &:before
+                opacity: 1
+            &:after
+                opacity: .6
+
+
+
+//comment form
+.comment-form
+    padding: 30px
+    &.no-pad
+        padding-left: 0
+        padding-right: 0
+    &--bordered
+        border-left: 1px solid #eae9e9
+        border-bottom: 1px solid #eae9e9
+        border-right: 1px solid #eae9e9
+    textarea
+        height: 150px
+    label
+        color: #717171
+    .c-btn
+        font-size: 14px
+//comments box
+.comments-box
+    padding: 30px 30px 0
+    overflow: hidden
+    &.no-pad
+        padding-left: 0
+        padding-right: 0
+    &--alt
+        border-left: 1px solid #eae9e9
+        border-bottom: 1px solid #eae9e9
+        border-right: 1px solid #eae9e9
+    .comment-list
+        overflow: hidden
+        margin-bottom: -30px
+        .comment
+            transform: translateY(1px)
+            .comment-body
+                margin-bottom: 30px
+                position: relative
+                display: flex
+                border-bottom: 1px solid #e3e3e3
+                +media-max(575px)
+                    flex-wrap: wrap
+                .author-pic
+                    border-radius: 50%
+                    flex: 0 0 70px
+                    margin-right: 20px
+                    img
+                        width: 100%
+                .comment-content
+                    display: flex
+                    flex-wrap: wrap
+                    +media-max(575px)
+                        flex: 0 0 100%
+                        margin-top: 15px
+                    .author-name
+                        margin-right: 15px
+                    time
+                        font-size: 1rem
+                        color: #909090
+                .postReplay
+                    position: absolute
+                    top: 0
+                    right: 0
+                    color: $brand-color
+                    font-size: 15px
+                    font-weight: 600
+                    &:hover
+                        color: $brand-color
+
+                p
+                    flex: 0 0 100%
+            ol.children
+                padding-left: 30px
+
+    .comment-meta
+        line-height: 1
+        margin-bottom: 30px
+        flex: 0 0 100%
+        margin-top: -5px
+        .item
+            color: #909090
+            display: inline-block
+            margin-right: 25px
+            a
+                color: #909090
+                &:hover
+                    color: $brand-color
+            i
+                margin-right: 8px
+            &:first-child
+                +media-max(767px)
+                    display: none

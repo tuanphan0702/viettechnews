@@ -1,0 +1,28 @@
+﻿@using Model.EF;
+@using Model.DAO;
+@using viettechnews.Common;
+
+@{
+    var cm = new Catkytu();
+
+    ViewBag.blog = new TintucDao().Blog_top5();
+    var blogtop = (List<Tintuc>)ViewBag.blog;
+
+}
+
+<div class="widget widget--border-box opinion">
+    <div class="widget__title has-ajax-load">
+        <a href="news/blog"><h4>Blog: Hạt giống tâm hồn</h4></a>
+    </div>
+    <ul class="o-lists">
+        @foreach (var blogitem in blogtop)
+        {
+            <li>
+                <div class="num"></div>
+                <div class="post-content">
+                    <a href="~/news/@blogitem.BlogId/@cm.CvString(blogitem.Title)">@cm.Limit(blogitem.Brief, 90, "...")</a>
+                </div>
+            </li>
+        }
+    </ul>
+</div>

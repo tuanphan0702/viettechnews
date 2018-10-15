@@ -1,0 +1,101 @@
+﻿@model Model.EF.Danhmuc
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-header d-flex align-items-center">
+            <h4>Thêm danh mục</h4>
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+
+                    @Html.ValidationSummary(true)
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                @Html.Label("Mã danh mục", new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-2">
+                                @Html.TextBoxFor(model => model.CategoryId, new { @class = "form-control textbox-control" })
+                                @Html.ValidationMessageFor(model => model.CategoryId)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                @Html.Label("PrtId1", new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-2">
+                                @Html.TextBoxFor(model => model.ParentId, new { @class = "form-control textbox-control" })
+                                @Html.ValidationMessageFor(model => model.ParentId)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                @Html.Label("PrtId2", new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-2">
+                                @Html.TextBoxFor(model => model.ChildId, new { @class = "form-control textbox-control" })
+                                @Html.ValidationMessageFor(model => model.ChildId)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                @Html.Label("Tên danh mục", new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(model => model.CategoryName, new { @class = "form-control textbox-control" })
+                                @Html.ValidationMessageFor(model => model.CategoryName)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                @Html.Label("Order No", new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-2">
+                                @Html.TextBoxFor(model => model.OrderNo, new { @class = "form-control textbox-control" })
+                                @Html.ValidationMessageFor(model => model.OrderNo)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                @Html.Label("Status", new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-4">
+                                @Html.CheckBoxFor(model => model.Status)
+                                @Html.ValidationMessageFor(model => model.Status)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Create" class="btn btn-primary">
+                        </div>
+                    </div>
+                </div>
+            }
+
+            <div>
+                @Html.ActionLink("Quay về", "Index")
+            </div>
+        </div>
+    </div>
+</div>

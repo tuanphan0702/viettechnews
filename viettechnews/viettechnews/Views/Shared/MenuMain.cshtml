@@ -1,0 +1,110 @@
+﻿@using Model.DAO;
+@using Model.EF;
+@using viettechnews.Common;
+
+@{
+    var cm = new Catkytu();
+
+    ViewBag.catenews = new DanhmucDao().ListDM_News();
+    var categoryNews = (List<Model.EF.Danhmuc>)ViewBag.catenews;
+
+    ViewBag.cateNewschild = new DanhmucDao().ListDM_Newschild();
+    var childnew = (List<Model.EF.Danhmuc>)ViewBag.cateNewschild;
+
+    ViewBag.catcn = new DanhmucDao().ListDM_CN();
+    var cn = (List<Model.EF.Danhmuc>)ViewBag.catcn;
+
+    ViewBag.catcnc = new DanhmucDao().ListDM_CN_child();
+    var cnc = (List<Model.EF.Danhmuc>)ViewBag.catcnc;
+
+}
+
+<div class="col-lg-2 col-3">
+    <div class="site-logo">
+        <a href="/"><img src="~/Content/img/logo_ws2.png" alt="Trang tin về công nghệ và cuộc sống"></a>
+    </div>
+</div>
+<div class="col-lg-2 col-3">
+    <div class="site-logo">
+        <a href="~/in-fact"><img src="~/Content/img/infact.jpg" alt="Trang tin về công nghệ và cuộc sống"></a>
+    </div>
+</div>
+
+<div class="col-lg-8 d-none d-lg-block u-padding-r-0">
+    <nav class="header__nav text-right">
+        <ul>
+            <li class="has-dropdown">
+                @foreach (var ctn in categoryNews)
+                {
+                    <a href="~/tin-tuc">@ctn.CategoryName</a>
+
+                    <ul class="menu-dropdown">
+                        <li><a href="~/news/suc-khoe"><i class="fa fa-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Sức khỏe</i></a></li>
+                        <li><a href="~/news/du-lich"><i class="fa fa-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Du lịch</i></a></li>
+                        <li><a href="~/news/phong-thuy"><i class="fa fa-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Phong thủy</i></a></li>
+                        <li><a href="~/news/am-thuc"><i class="fa fa-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Ẩm thực</i></a></li>
+                        <li><a href="~/news/phong-cach"><i class="fa fa-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Phong cách</i></a></li>
+                        <li><a href="~/news/kinh-doanh"><i class="fa fa-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Kinh doanh</i></a></li>
+                        <li><a href="~/news/giai-tri"><i class="fa fa-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Giải trí</i></a></li>
+                        <li><a href="~/news/the-thao"><i class="fa fa-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Thể thao</i></a></li>
+                        <li><a href="~/news/gaming"><i class="fa fa-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Gaming</i></a></li>
+                    </ul>
+                }
+            </li>
+            <li class="menu-item-has-mega-menu has-mega-menu parent__megaMenu pos-left">
+                @foreach (var cnnn in cn)
+                {
+                    ViewBag.tincn = new TintucDao().ListTop3mn_CN(cnnn.CategoryId);
+                    var settincn = (List<Model.EF.Tintuc>)ViewBag.tincn;
+                    <a href="~/tin-cong-nghe">@cnnn.CategoryName</a>
+                    <div class="mega-menu">
+                        <!-- Nav tabs -->
+                        <ul class="mega-menu__nav">
+                            <li><a href="~/tin-cong-nghe/Pcs"><i class="fa fa-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Pcs</i></a></li>
+                            <li><a href="~/tin-cong-nghe/Mobile"><i class="fa fa-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Mobile</i></a></li>
+                            <li><a href="~/tin-cong-nghe/Tablet"><i class="fa fa-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Tablet</i></a></li>
+                            <li><a href="~/tin-cong-nghe/Camera"><i class="fa fa-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Camera</i></a></li>
+                            <li><a href="~/tin-cong-nghe/Windows"><i class="fa fa-mobile">&nbsp;&nbsp;&nbsp;&nbsp;Windows</i></a></li>
+                        </ul>
+                        <!-- Tab panes -->
+                        <div class="megam-menu__content">
+                            <div class="megam-menu__content__inner">
+                                @foreach (var settin in settincn)
+                                {
+                                    <article class="post-item">
+                                        <div class="post-item__inner">
+                                            <figure>
+                                                <a href="~/news/@settin.BlogId/@cm.CvString(settin.Title)"><img class="img-crop_menu" src="@settin.Picture" alt="@settin.Title"></a>
+                                            </figure>
+                                            <div class="post-content">
+                                                <h6 class="post-title">
+                                                    <a href="~/news/@settin.BlogId/@cm.CvString(settin.Title)">
+                                                        @cm.Limit(settin.Title, 45, "...")
+                                                    </a>
+                                                </h6>
+                                                <div class="post-meta">
+                                                    <time datetime="2018-02-14 20:00"><i class="fa fa-clock-o"></i>@settin.CreateDate.Value.ToString("d/M/yyyy HH:mm")  </time>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </article>
+                                }
+                            </div>
+                        </div>
+                    </div> <!--//Mega Menu end -->
+                }
+            </li>
+
+            <li><a href="~/tin-the-gioi">Thế giới</a></li>
+            <li><a href="~/tin-auto">Auto</a></li>
+            <li><a href="~/news/suc-khoe">Sức Khỏe</a></li>
+            <li><a href="~/tin-kien-truc">Kiến trúc</a></li>
+            <li><a href="~/in-fact"><i class="alert-primary">IN FACT</i></a></li>
+        </ul>
+    </nav>
+</div>
+<div class="col-lg-1 col-6">
+    <div class="header__search has-menubar text-right">
+        <button id="JS-openButton" class="header__menubar d-lg-none d-xl-none"><i class="ico-bar"></i></button>
+    </div>
+</div>

@@ -1,0 +1,68 @@
+@import "newstoday/variables"
+
+body
+    font-family: $base-font
+    font-size: $paragraph-font-size
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+    line-height: $heading-line-height
+    margin: 0 0 0.75rem
+    clear: both
+    color: $heading-text-color
+    font-family: $heading-font
+    a
+        color: $heading-text-color
+
+h1
+    font-size: 2.25rem
+h2
+    font-size: 1.875rem
+h3
+    font-size: 1.5rem
+h4
+    font-size: 1.25rem
+h5
+    font-size: 1.125rem
+h6
+    font-size: 1rem
+
++media-max(767px)
+    h1
+        font-size: 1.75rem
+    h2
+        font-size: 1.5rem
+    h3
+        font-size: 1.25rem
+    h4
+        font-size: 1.125rem
+
+p
+    font-size: $paragraph-font-size
+    line-height: $paragraph-line-height
+    color: $paragraph-text-color
+    font-family: $paragraph-font
+    margin: 0 0 1.875rem
+    .drop-caps
+        font-size: 420%
+        color: $dark
+        float: left
+        line-height: 1
+        margin-right: 10px
+
+blockquote
+    &.alignleft
+        float: left
+        width: 50%
+        padding-right: 30px
+        +media-max(575px)
+            width: 100%
+    &.alignright
+        float: left
+        width: 50%
+        padding-left: 30px
+        +media-max(575px)
+            width: 100%
