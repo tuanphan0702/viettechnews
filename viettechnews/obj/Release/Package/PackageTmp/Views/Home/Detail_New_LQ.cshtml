@@ -1,0 +1,107 @@
+﻿
+
+@model Model.EF.Tintuc
+@using Model.EF;
+@using Model.DAO;
+@using viettechnews.Common;
+
+
+@{
+    var cm = new Catkytu();
+    ViewBag.Title = "Detail_New_LQ";
+    Layout = "~/Views/Shared/_Layout_Single.cshtml";
+
+    ViewBag.tendm = new DanhmucDao().ListDM_chuyenmuc(Model.CategoryId);
+    var dm = (List<Danhmuc>)ViewBag.tendm;
+
+    ViewBag.tinlq = new TintucDao().getnews(Model.CategoryId);
+    var lq = (List<Tintuc>)ViewBag.tinlq;
+}
+
+
+<div class="breadcrumbs-area breadcrumbs-area--light">
+    <div class="container">
+        <div class="breadcrumbs">
+            <span>
+                <a href="/">Home</a>
+            </span>
+            <span class="separetor">-</span>
+            @foreach (var tdm in dm)
+            {<span class="current">@tdm.CategoryName</span>}
+        </div>
+    </div>
+</div>
+
+<div class="m-post-content m-post-content--nyc">
+    <div class="post-top">
+        <ul class="categories">
+            @foreach (var tdm in dm)
+            {
+            <li><a href="#">@tdm.CategoryName</a></li>}
+        </ul>
+        <h1 class="post-title">@Model.Title</h1>
+        <div class="post-meta">
+            <div class="item">
+                <time datetime="2018-02-14 20:00"><i class="fa fa-clock-o"></i>@Model.CreateDate.Value.ToString("d/M/yyyy HH:mm")</time>
+                &nbsp; <i class="fa fa-eye"></i>Lượt xem: @Model.ViewNo
+            </div>
+        </div>
+        <div class="socials-share text-left">
+            <a class="bg-facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://www.viettechnews.com/news/@Model.BlogId/@cm.CvString(Model.Title)" target="_blank"><span class="fa fa-facebook"></span></a>
+            <a class="bg-twitter" href="https://twitter.com/share?text=@Model.Title&url=https://www.viettechnews.com/news/@Model.BlogId/@cm.CvString(Model.Title)" target="_blank"><span class="fa fa-twitter"></span></a>
+            <a class="bg-google-plus" href="https://plus.google.com/share?url=https://www.viettechnews.com/news/@Model.BlogId/@cm.CvString(Model.Title)" target="_blank"><span class="fa fa-google-plus"></span></a>
+        </div>
+    </div>
+    <figure class="post-thumb">
+        <img class="img-crop_detail" src="@Model.Picture" alt="">
+    </figure>
+    <div class="entry-content">
+        <p>@Model.Brief</p>
+
+        @Html.Raw(Model.Content)
+
+    </div>
+    <div class="post-tags u-margin-t-60">
+        <div class="tags-wrap">
+        </div>
+    </div>
+</div>
+
+<div class="posts-box has-cat u-margin-t-40">
+    <div class="posts-box__top">
+        <h4 class="posts-box__top__title">Tin liên quan</h4>
+    </div>
+    <div class="posts-list has-style-1">
+        @foreach (var gtin in lq)
+        {
+            <article class="post-item cat-business post-item--style-1">
+                <figure>
+                    <a href="#"><img class="img-crop" src="@gtin.Picture" alt=""></a>
+                </figure>
+                <div class="post-content">
+                    <div class="post-category">
+                        <ul>
+                            @foreach (var indm in dm)
+                            {
+                                <li><a href="#">@indm.CategoryName</a></li>
+                            }
+                        </ul>
+                    </div>
+                    <h4 class="post-title">
+                        <a href="#">
+                            @cm.Limit(gtin.Title, 60, "...")
+                        </a>
+                    </h4>
+                    <div class="post-meta">
+                        <time datetime="2018-02-14 20:00"><i class="fa fa-clock-o"></i>@gtin.CreateDate.Value.ToString("d/M/yyyy HH:mm")  </time>
+                    </div>
+                    <p class="post-excerpt">
+                        @cm.Limit(gtin.Brief, 80, "...")
+                    </p>
+                </div>
+            </article>
+        }
+    </div>
+</div>
+
+

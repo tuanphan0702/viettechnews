@@ -1,0 +1,28 @@
+﻿@using Model.EF;
+@using Model.DAO;
+@using viettechnews.Common;
+
+@{
+
+    var cm = new Catkytu();
+
+    ViewBag.tintuc = new TintucDao().infact_detailnews();
+    var infact = (List<Tintuc>)ViewBag.tintuc;
+}
+
+<div class="widget widget--border-box newsletter-one">
+    <div class="widget__title">
+        @foreach (var item in infact){<h4>@cm.Limit(item.Title,35," ..")</h4>}
+    </div>
+    <div class="newsletter-box">
+        @foreach (var item in infact)
+        {
+            <figure>
+                <a href="~/in-fact/@item.BlogId/@cm.CvString(item.Title)">
+                    <img src="@item.Picture" alt="@item.Title">
+                </a>
+            </figure>
+        }
+    </div>
+</div>
+

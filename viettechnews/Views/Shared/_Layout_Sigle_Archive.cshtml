@@ -1,0 +1,449 @@
+﻿@using Model.EF;
+@using Model.DAO;
+@using viettechnews.Common;
+@{
+    var cm = new Catkytu();
+    ViewBag.topxem = new TintucDao().top5viewnhieu();
+    var top5v = (List<Tintuc>)ViewBag.topxem;
+
+}
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" type="image/png" href="~/iconnews.png" />
+    <title>Viet Tech News : Chuyên trang về công nghệ và cuộc sống</title>
+    <meta name="description" content="viettechnews.com mang đến cho bạn thông tin về các sự kiện, câu chuyện, phân tích về Công nghệ, tin thế giới và đời sống hằng ngày. Tin tức luôn được cập nhật đầy đủ và chính xác nhất">
+    <meta name="keywords" content="Trang tin về công nghệ và các vấn đề về cuộc sống,Tin nhanh,cập nhật,báo điện tử,việt báo,tin việt,VietNews,mua bán,rao vặt,tư vấn,việc làm,Hà Nội,Sài Gòn,tin tức,Huế,Đà Nẵng,VDC,Netnam,Saigonnet,Sggp,VET,Nhân dân,Lao động,Kinh tế,Kinh doanh,Tin nhanh,cap nhat,bao dien tu,Vietbao,TinViet,Mua Ban,Rao Vat,Tu Van,Viec Lam,Hanoi,Ha Noi,Saigon,Sai gon,Tin tuc,Tintuc,Hue,Da Nang,Danang,Nhandan,Nhan dan,Laodong,Lao dong,Kinhte,Kinh te,Kinhdoanh,Kinh doanh">
+
+    <!-- Google / Search Engine Tags -->
+    <meta itemprop="name" content="Viet Tech News : Chuyên trang về công nghệ và cuộc sống">
+    <meta itemprop="description" content="viettechnews.com mang đến cho bạn thông tin về các sự kiện, câu chuyện, phân tích về Công nghệ, tin thế giới và đời sống hằng ngày.">
+    <meta itemprop="image" content="http://viettechnews.com/Content/img/logo_ws2.png">
+
+    <!-- Google fonts -->
+    @*<link href="https://fonts.googleapis.com/css?family=Heebo:100,300,400,500,700,800,900" rel="stylesheet">*@
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,700,800" rel="stylesheet">
+    @*<link href='https://fonts.googleapis.com/css?family=Roboto:100,300,400,700,500' rel='stylesheet' type='text/css'>*@
+    <!-- inject:css -->
+    <link rel="stylesheet" href="~/Content/vendor/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="~/Content/vendor/owl.carousel2/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/Content/vendor/owl.carousel2/owl.theme.default.css">
+    <link rel="stylesheet" href="~/Content/vendor/magnific-popup/magnific-popup.css">
+    <link rel="stylesheet" href="~/Content/vendor/custom-icon/style.css">
+    <link rel="stylesheet" href="~/Content/vendor/animate.css">
+    <link rel="stylesheet" href="~/Content/vendor/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/Content/css/newstoday.min.css">
+    <link href="~/Content/vendor/bootstrap/css/tuanpda.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- endinject -->
+    <!-- inject:head:js -->
+    <script src="~/Content/vendor/modernizr-2.8.3.min.js"></script>
+    <!-- endinject -->
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126185577-1"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'UA-126185577-1');
+    </script>
+
+    <!--Google Adsense-->
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-8472502143736231",
+            enable_page_level_ads: true
+        });
+    </script>
+
+
+</head>
+<body>
+    <div id="fb-root"></div>
+    <script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v3.1&appId=2002979276419549&autoLogAppEvents=1';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+
+    <header class="header header--style-one">
+        <div class="header__status has-bg color-light">
+            <div class="container">
+                <div class="row">
+                    <div class="col-8 col-sm-6 ">
+                        <ul class="header__status__items header__status__items--left">
+                            <li><i class="fa fa-calendar"></i> Today: @DateTime.Now.ToString("dd/MM/yyyy")</li>
+                            <li class="d-none d-xl-block d-lg-block"><i class="fa fa-clock-o"></i> @DateTime.Now.ToString("hh:mm:ss tt")</li>
+                            <li class="d-none d-xl-block"><i class="fa fa-user"></i> Online: @App["dem"]</li>
+                        </ul>
+                    </div>
+                    <div class="col-4 col-sm-6">
+                        <ul class="header__status__items header__status__items--right">
+                            <li class="header__status__social d-none d-xl-block d-lg-block">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-google-plus"></i></a>
+                            </li>
+                            <li class="header__status__login cursor-pointer" data-toggle="modal" data-target="#usermodal">
+                                <i class="fa fa-lock" aria-hidden="true"></i>
+                                <a href="~/Admin/login">Login</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div> <!--//.row -->
+            </div>
+        </div> <!--//.header__status -->
+        <div class="header__breaking-news d-none d-sm-flex">
+            @{Html.RenderAction("BreakingNews", "Home");}
+        </div> <!--//.header__breaking-news -->
+        <div class="main-nav">
+            <div class="container">
+                <div class="row u-flex--item-center">
+                    @{Html.RenderAction("MenuMain", "Home");}
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Mobile menu area start -->
+    <div class="mobile-menu-area">
+        <div class="btn-wrap">
+            <button id="JS-closeButton"><i class="ico-close"></i></button>
+        </div>
+        <div class="search-form">
+            <form action="#">
+                <input placeholder="Search Here" type="text">
+                <button><i class="ico-search"></i></button>
+            </form>
+        </div>
+        <nav class="mobile-menu">
+            <ul>
+                <li class="active">
+                    <a class="collapsed has-child" data-toggle="collapse" aria-expanded="true" href="#cat-col-1">Home</a>
+                    <ul id="cat-col-1" class="collapse" aria-expanded="true">
+                        <li><a href="~/tin-tuc">News</a></li>
+                        <li><a href="~/tin-cong-nghe">Công Nghệ</a></li>
+                        <li><a href="~/tin-giai-tri">Giải Trí</a></li>
+                        <li><a href="~/tin-the-gioi">Thế Giới</a></li>
+                        <li><a href="~/tin-the-thao">Thể Thao</a></li>
+                        <li><a href="~/tin-game">Gaming</a></li>
+                        <li><a href="~/tin-kien-truc">Kiến trúc</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="collapsed has-child" data-toggle="collapse" href="#cat-col-2" aria-expanded="true">in Fact</a>
+                    <ul aria-expanded="true" id="cat-col-2" class="collapse">
+                        <li><a href="~/in-fact"><i class="alert-primary">IN FACT</i></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div class="social-links">
+            <ul>
+                <li><a href="#"><span class="ion-social-facebook"></span></a></li>
+                <li><a href="#"><span class="ion-social-twitter"></span></a></li>
+                <li><a href="#"><span class="ion-social-googleplus"></span></a></li>
+                <li><a href="#"><span class="ion-social-tumblr"></span></a></li>
+            </ul>
+        </div>
+    </div><!--// Mobile menu area end -->
+
+    <div class="banner-item u-padding-tb-20">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({
+                google_ad_client: "ca-pub-8472502143736231",
+                enable_page_level_ads: true
+            });
+        </script>
+        <div class="container u-flex u-flex--content-center">
+            <div class="banner-item__inner">
+                <a href="https://www.google.com.vn/"><img class="img-crop_quangcao_long" src="~/Content/img/google-banner.png" alt=""></a>
+            </div>
+        </div>
+    </div> <!--//.banner-item -->
+
+    <section class="has-sidebar u-padding-tb-20">
+        <div class="container">
+            <div class="row" data-sticky_parent>
+                <div class="col-lg-8 content-wrapper">
+                    <div data-sticky_column>
+                        @RenderBody()
+                    </div>
+                </div>
+
+                <div class="col-lg-4 sidebar sidebar--right u-md-down-margin-t-40">
+                    @{Html.RenderAction("TrendingNews", "Home");}
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+        <div class="footer__widgets style-1">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-dev u-md-down-margin-b-40">
+                        <div class="widget about">
+                            <div class="widget__title">
+                                <h4>New york office</h4>
+                                <ul class="a-block">
+                                    <li>
+                                        <h6>Address :</h6>
+                                        <p>
+                                            <span>vietTechnews Ltd.</span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <h6>Mobile :</h6>
+                                        <p>
+                                            <span>(+84) 946366683</span>
+                                            <span>(+84) 961204555</span>
+                                        </p>
+                                    </li>
+                                    <li>
+                                        <h6>Email Address :</h6>
+                                        <p>
+                                            <span>tuanphan0702@gmail.com</span>
+                                        </p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-dev u-md-down-margin-b-40">
+                        <div class="widget widget_menu">
+                            <div class="widget__title">
+                                <h4>Services</h4>
+                                <ul>
+                                    <li><a href="#">viettechnews.com</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-dev u-sm-down-margin-b-40">
+                        <div class="widget bolt-post">
+                            <div class="widget__title">
+                                <h4>Top view news</h4>
+                                <ul>
+                                    @foreach (var view5 in top5v)
+                                    {
+                                        <li>
+                                            <h6 class="post-title">
+                                                <a href="~/news/@view5.BlogId/@cm.CvString(view5.Title)">
+                                                    @cm.Limit(view5.Title, 60, "...")
+                                                </a>
+                                            </h6>
+                                            <div class="post-meta">
+                                                <time datetime="2018-02-14 20:00"><i class="fa fa-clock-o"></i>@view5.CreateDate.Value.ToString("d/M/yyyy HH:mm") </time>
+                                            </div>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-dev">
+                        <div class="widget gallery">
+                            <div class="widget__title">
+                                <h4>photo gallery</h4>
+                                <ul class="zoom-gallery">
+                                    <li>
+                                        <a href="~/Content/img/tintuc/images/tinbai/BMW-7-Series-4k.jpg">
+                                            <img class="img-galery" src="~/Content/img/tintuc/images/tinbai/BMW-7-Series-4k.jpg" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="~/Content/img/tintuc/images/tinbai/canon800.jpg">
+                                            <img class="img-galery" src="~/Content/img/tintuc/images/tinbai/canon800.jpg" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="~/Content/img/tintuc/images/tinbai/modric.jpg">
+                                            <img class="img-galery" src="~/Content/img/tintuc/images/tinbai/modric.jpg" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="~/Content/img/tintuc/images/tinbai/ipadx.jpg">
+                                            <img class="img-galery" src="~/Content/img/tintuc/images/tinbai/ipadx.jpg" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="~/Content/img/tintuc/images/tinbai/mercedes.jpg">
+                                            <img class="img-galery" src="~/Content/img/tintuc/images/tinbai/mercedes.jpg" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="~/Content/img/tintuc/images/tinbai/bb.jpg">
+                                            <img class="img-galery" src="~/Content/img/tintuc/images/tinbai/bb.jpg" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="~/Content/img/tintuc/images/tinbai/zenbook.jpg">
+                                            <img class="img-galery" src="~/Content/img/tintuc/images/tinbai/zenbook.jpg" alt="">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="~/Content/img/tintuc/images/tinbai/ROC.jpg">
+                                            <img class="img-galery" src="~/Content/img/tintuc/images/tinbai/ROC.jpg" alt="">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="r-dev"></div>
+                <div class="row">
+                    <div class="col-md-4 col-sm-5">
+                        <div class="widget social">
+                            <div class="logo">
+                                <a href="#"><img src="img/logo.png" alt=""></a>
+                            </div>
+                            <ul class="social--circle social--color">
+                                <li><a class="social__facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a class="social__twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a class="social__google-plus" href="#"><i class="fa fa-google-plus"></i></a></li>
+                                <li><a class="social__linkedin" href="#"><i class="fa fa-linkedin"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-8 col-sm-7 d-none d-sm-block">
+                        <div class="widget banner">
+                            <div class="banner__inner">
+                                <a href="#"><img src="img/banner-770x100.jpg" alt=""></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer__end footer__end--dark">
+            <div class="container">
+                <nav class="footer__nav">
+                    <ul>
+                        <li><a href="#">Site Map</a></li>
+                        <li><a href="#">Privacy Policy </a></li>
+                        <li><a href="#">Copyright Policy </a></li>
+                        <li><a href="#">Your ad choices</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Subscription Terms</a></li>
+                    </ul>
+                </nav>
+                <div class="footer__copyright u-padding-t-15">
+                    <p class="u-font13">© 2018 The New York News Company</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- user modal (sign in) -->
+    <div class="modal fade user-modal" id="usermodal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Sign in</h4>
+                    <button class="modal-close" data-dismiss="modal"><i class="ico-close"></i></button>
+                </div>
+                <div class="modal-body">
+                    <div class="inner">
+                        <ul class="social-login">
+                            <li><a class="btn-fb" href="#"><i class="fa fa-facebook"></i>Facebook</a></li>
+                            <li><a class="btn-gle-pl" href="#"><i class="fa fa-google-plus"></i>Google Plus</a></li>
+                        </ul>
+                        <div class="devider"><span>or</span></div>
+                        <form action="#" class="user-form">
+                            <div class="form-group u-margin-b-30">
+                                <label for="email1">Email</label>
+                                <input type="email" class="form-control" id="email1">
+                            </div>
+                            <div class="form-group">
+                                <div class="u-flex u-flex--content-between">
+                                    <label for="password">Password</label>
+                                    <a href="#">Forget Password</a>
+                                </div>
+                                <input type="password" class="form-control" id="password">
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="remember">
+                                <label class="custom-control-label" for="remember">Remember sign in</label>
+                            </div>
+                            <div class="form-submit u-margin-t-20">
+                                <button type="submit" class="text-uppercase btn-block c-btn c-btn--solid c-btn--color-brand">Sign In</button>
+                            </div>
+                            <div class="bottom-msg u-margin-t-35">
+                                Don't have an account? <a data-dismiss="modal" data-toggle="modal" data-target="#usermodal-up" href="#">Sign up</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- user modal (sign up) -->
+    <div class="modal fade user-modal" id="usermodal-up" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Sign Up</h4>
+                    <button class="modal-close" data-dismiss="modal"><i class="ico-close"></i></button>
+                </div>
+                <div class="modal-body">
+                    <div class="inner">
+                        <ul class="social-login">
+                            <li><a class="btn-fb" href="#"><i class="fa fa-facebook"></i>Facebook</a></li>
+                            <li><a class="btn-gle-pl" href="#"><i class="fa fa-google-plus"></i>Google Plus</a></li>
+                        </ul>
+                        <div class="devider"><span>or</span></div>
+                        <form action="#" class="user-form">
+                            <div class="form-group u-margin-b-30">
+                                <label for="name">Full Name</label>
+                                <input type="email" class="form-control" id="name">
+                            </div>
+                            <div class="form-group u-margin-b-30">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" id="email">
+                            </div>
+                            <div class="form-group">
+                                <label for="password1">Password</label>
+                                <input type="password" class="form-control" id="password1">
+                            </div>
+                            <div class="custom-control custom-checkbox">
+                                <input type="checkbox" class="custom-control-input" id="remember2">
+                                <label class="custom-control-label" for="remember2">
+                                    Creating an account means you’re okay with our <a href="#">Terms of Service,</a>
+                                    <a href="#">Privacy Policy</a>
+                                </label>
+                            </div>
+                            <div class="form-submit u-margin-t-25">
+                                <button type="submit" class="text-uppercase btn-block c-btn c-btn--solid c-btn--color-brand">Sign Up</button>
+                            </div>
+                            <div class="bottom-msg u-margin-t-35">
+                                Don't have an account? <a data-dismiss="modal" data-toggle="modal" data-target="#usermodal" href="#">Log In</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- inject:js -->
+    <script src="~/Content/vendor/jquery/jquery-1.12.0.min.js"></script>
+    <script src="~/Content/vendor/bootstrap/js/popper.min.js"></script>
+    <script src="~/Content/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Content/vendor/owl.carousel2/owl.carousel.min.js"></script>
+    <script src="~/Content/vendor/sticky-kit/jquery.sticky-kit.js"></script>
+    <script src="~/Content/vendor/flexMenu-master/flexmenu.min.js"></script>
+    <script src="~/Content/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="~/Content/vendor/nicescroll-master/jquery.nicescroll.min.js"></script>
+    <script src="~/Content/js/newstoday.js"></script>
+    <!-- endinject -->
+</body>
+</html>

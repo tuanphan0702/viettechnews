@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Model.EF.Tintuc>
+@using viettechnews.Common;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
+    var cm = new Catkytu();
+}
+
+
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-header">
+            <p>
+                @Html.ActionLink("Đăng tin", "Create")
+            </p>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th width="50%">Tin bài</th>
+                            <th width="5%">Ảnh</th>
+                            <th width="15%">Ngày đăng</th>
+                            <th width="10%">Lượt xem</th>
+                            <th width="15%">Chức năng</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <th scope="row">@cm.Limit(item.Title,75,"...")</th>
+                                <td>
+                                    <img style="cursor:pointer" id="img_@item.BlogId" src="@item.Picture" width="40" onclick="selectImage('/Admin/Tintuc/ChangeImage/@item.BlogId',this.id)"/>
+                                </td>
+                                <td>@item.CreateDate.Value.ToString("dd/MM/yyyy HH:mm")</td>
+                                <td>@item.ViewNo</td>
+                                <td>
+                                    @Html.ActionLink("Edit", "Edit", new { id = item.BlogId }) |
+                                    @Html.ActionLink("Details", "Details", new { id = item.BlogId }) |
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.BlogId })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <script>
+                    function selectImage(action, id)
+                    {
+                        var finder = new CKFinder();
+                        finder.selectActionFunction = function (fileUrl) {
+                            $.ajax({
+                                method: "GET",
+                                url: action,
+                                data: { picture: fileUrl }
+                            }).done(function (path) {
+                                if (path != '') {
+                                    alert("lỗi hình ảnh: " + path);
+                                }
+                                else {
+                                    $("#" + id).attr("src", fileUrl);
+                                }
+                            });
+                        };
+                        finder.popup();
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+</div>

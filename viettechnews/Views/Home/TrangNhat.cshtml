@@ -1,0 +1,36 @@
+﻿@using Model.EF;
+@using Model.DAO;
+@using viettechnews.Common;
+
+@{
+    var cm = new Catkytu();
+
+    ViewBag.tintuc = new TintucDao().Tintrangnhat();
+    var trangnhat = (List<Tintuc>)ViewBag.tintuc;
+}
+
+
+<div class="posts-list-fluid-first">
+    <article class="post-item">
+        <div class="post-item__inner">
+            @foreach (var tin in trangnhat)
+            {
+                <figure>
+                    <a href="~/news/@tin.BlogId/@cm.CvString(tin.Title)"><img class="img-crop_trangnhat" src="@tin.Picture" alt="@tin.Title"></a>
+                </figure>
+                <div class="post-content">
+                    <h2>
+                        <a href="~/news/@tin.BlogId/@cm.CvString(tin.Title)">
+                            @cm.Limit(tin.Title,50," ..")
+                        </a>
+                    </h2>
+                    <div class="post-meta">
+                        <time datetime="2018-02-14 20:00"><i class="fa fa-clock-o"></i>@tin.CreateDate.Value.ToString("d/M/yyyy HH:mm")  </time>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-eye"></i>View: @tin.ViewNo
+                    </div>
+                    <h3> @cm.Limit(tin.Brief,100,"...")</h3>
+                </div>
+            }
+        </div>
+    </article>
+</div>

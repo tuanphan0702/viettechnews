@@ -1,0 +1,22 @@
+=clear
+    &::before
+        clear: both
+        display: block
+        content: ""
+    &::after
+        clear: both
+        display: block
+        content: ""
+
+// screen
+=media-min($min)
+    @media (min-width: $min)
+        @content
+
+=media-max($max)
+    @media (max-width: $max)
+        @content
+
+=media-minmax($min,$max)
+    @media (min-width: $min) and (max-width: $max)
+        @content

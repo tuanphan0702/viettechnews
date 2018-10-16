@@ -1,0 +1,69 @@
+﻿
+
+@using Model.EF;
+@using Model.DAO;
+@using viettechnews.Common;
+@{
+    ViewBag.Title = "Archive_kientruc";
+    Layout = "~/Views/Shared/_Layout_Sigle_Archive.cshtml";
+
+    var cm = new Catkytu();
+
+    ViewBag.tintuc = new TintucDao().getnews_kientruc();
+    var newst = (List<Tintuc>)ViewBag.tintuc;
+
+    ViewBag.dm = new DanhmucDao().tendanhmuc_kientruc();
+    var listdm = (List<Danhmuc>)ViewBag.dm;
+}
+
+<div class="col-lg-16 content-wrapper">
+    <div class="posts-box3 archive-box">
+        @foreach (var ldm in listdm)
+        {
+            <div class="posts-box3__top">
+                <h4 class="posts-box3__top__title"><a href="/"><i class="fa fa-home"></i> Home</a> &nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-bookmark-o"></i> Tin @ldm.CategoryName</h4>
+            </div>
+        }
+        @foreach (var gettin in newst)
+        {
+            <div class="archive-posts">
+                <article class="post-item">
+                    <div class="col-lg-6">
+                        <figure>
+                            <a href="~/news/@gettin.BlogId/@cm.CvString(gettin.Title)"><img class="img-crop_tinlon" src="@gettin.Picture" alt="@gettin.Title"></a>
+                        </figure>
+                    </div>
+
+                    <div class="post-content">
+                        <h3 class="post-title">
+                            <a href="~/news/@gettin.BlogId/@cm.CvString(gettin.Title)">
+                                @cm.Limit(gettin.Title, 60, " ..")
+                            </a>
+                        </h3>
+                        <div class="post-meta">
+                            <div class="item">
+                                <time datetime="2018-02-14 20:00"><i class="fa fa-clock-o"></i>@gettin.CreateDate.Value.ToString("d/M/yyyy HH:mm")  </time>
+                            </div>
+
+                            <div class="item">
+                                <i class="fa fa-eye"></i>@gettin.ViewNo
+                            </div>
+                        </div>
+                        <p class="post-excerpt">
+                            @cm.Limit(gettin.Brief, 160, "...")
+                        </p>
+                    </div>
+                </article>
+            </div><!--//.posts-list -->
+        }
+        <div class="load-more u-margin-t-60">
+            <a href="#">Xem thêm</a>
+        </div>
+    </div> <!--//.posts-box  -->
+</div>
+
+
+
+
+
+

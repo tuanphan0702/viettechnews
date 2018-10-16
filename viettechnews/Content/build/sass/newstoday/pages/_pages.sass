@@ -1,0 +1,87 @@
+// contact page
+.form-title
+    height: 50px
+    display: flex
+    border: 1px solid #eae9e9
+    padding-left: 30px
+    border-left: 4px solid $brand-color
+    align-items: center
+    +media-max(575px)
+        padding-left: 20px
+    h4
+        margin: 0
+        font-weight: 400
+.form-body
+    padding: 30px
+    border: 1px solid #eae9e9
+    border-top: 0
+    +media-max(575px)
+        padding-left: 20px
+        padding-right: 20px
+.address-body
+    padding: 30px 30px 40px
+    border: 1px solid #eae9e9
+    border-top: 0
+    +media-max(575px)
+        padding-left: 20px
+        padding-right: 20px
+    ul
+        li
+            margin-bottom: 35px
+            &:last-child
+                margin-bottom: 0
+            h4
+                font-weight: 400;
+            p
+                margin-bottom: 0
+
+//404 page
+.not-found
+    padding-top: 80px
+    padding-bottom: 150px
+    display: flex
+    justify-content: center
+.not-found__content
+    text-align: center
+    padding-top: 45px
+    h4
+        font-family: open sans
+        font-weight: 600
+    br
+        +media-max(575px)
+            display: none
+.not-found__search
+    position: relative
+    margin: auto
+    max-width: 370px
+    input
+        width: 100%
+        border: 1px solid #8d8d8d
+        height: 46px
+        padding-left: 10px
+        padding-right: 40px
+        font-size: 0.9375rem
+        &:focus
+            border: 1px solid $brand-color
+    button
+        position: absolute
+        top: 0
+        right: 0
+        background: transparent
+        border: 0
+        height: 46px
+        width: 36px
+        color: #717171
+        cursor: pointer
+        &:hover
+            color: $brand-color
+
+
+//archive
+.posts-box3
+    &.archive-box
+        .posts-box3__top__title
+            +media-max(400px)
+                text-overflow: ellipsis
+                overflow: hidden
+                white-space: nowrap

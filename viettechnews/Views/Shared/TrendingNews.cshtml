@@ -1,0 +1,99 @@
+﻿
+@using viettechnews.Common;
+@{
+    var cm = new Catkytu();
+    var trending1 = (List<Model.EF.Tintuc>)ViewBag.trendingnews1;
+    var trending2 = (List<Model.EF.Tintuc>)ViewBag.trendingnews2;
+    var trending3 = (List<Model.EF.Tintuc>)ViewBag.trendingnews3;
+    var trending4 = (List<Model.EF.Tintuc>)ViewBag.trendingnews4;
+    var trending5 = (List<Model.EF.Tintuc>)ViewBag.trendingnews5;
+
+}
+
+@{Html.RenderAction("Quangcao", "Home");}
+
+<div class="side-bar__inner" data-sticky_column>
+    @{Html.RenderAction("inFact_News", "Home");}
+    <div class="widget widget--border-box cat-trending single-cat">
+        <div class="widget__title has-ajax-load">
+            <h4>Xem nhiều</h4>
+        </div>
+        <ul class="posts-wrap">
+            @foreach (var tren1 in trending1)
+            {
+                <li class="cat-sports">
+                    <figure>
+                        <a href="~/news/@tren1.BlogId/@cm.CvString(tren1.Title)"><img class="img-crop_trending" src="@tren1.Picture" alt="@tren1.Title"></a>
+                    </figure>
+                    <div class="post-content">
+                        <h5 class="post-title">
+                            <a href="~/news/@tren1.BlogId/@cm.CvString(tren1.Title)">
+                                @cm.Limit(tren1.Brief, 65, "...")
+                            </a>
+                        </h5>
+                    </div>
+                </li>
+            }
+            @foreach (var tren2 in trending2)
+            {
+                <li class="cat-local">
+                    <figure>
+                        <a href="~/news/@tren2.BlogId/@cm.CvString(tren2.Title)"><img class="img-crop_trending" src="@tren2.Picture" alt="@tren2.Title"></a>
+                    </figure>
+                    <div class="post-content">
+                        <h5 class="post-title">
+                            <a href="~/news/@tren2.BlogId/@cm.CvString(tren2.Title)">
+                                @cm.Limit(tren2.Brief, 65, "...")
+                            </a>
+                        </h5>
+                    </div>
+                </li>
+            }
+            @foreach (var tren3 in trending3)
+            {
+                <li class="cat-business">
+                    <figure>
+                        <a href="~/news/@tren3.BlogId/@cm.CvString(tren3.Title)"><img class="img-crop_trending" src="@tren3.Picture" alt="@tren3.Title"></a>
+                    </figure>
+                    <div class="post-content">
+                        <h5 class="post-title">
+                            <a href="~/news/@tren3.BlogId/@cm.CvString(tren3.Title)">
+                                @cm.Limit(tren3.Brief, 65, "...")
+                            </a>
+                        </h5>
+                    </div>
+                </li>
+            }
+            @foreach (var tren4 in trending4)
+            {
+                <li class="cat-politics">
+                    <figure>
+                        <a href="~/news/@tren4.BlogId/@cm.CvString(tren4.Title)"><img class="img-crop_trending" src="@tren4.Picture" alt="@tren4.Title"></a>
+                    </figure>
+                    <div class="post-content">
+                        <h5 class="post-title">
+                            <a href="~/news/@tren4.BlogId/@cm.CvString(tren4.Title)">
+                                @cm.Limit(tren4.Brief, 65, "...")
+                            </a>
+                        </h5>
+                    </div>
+                </li>
+            }
+            @foreach (var tren5 in trending5)
+            {
+                <li>
+                    <figure>
+                        <a href="~/news/@tren5.BlogId/@cm.CvString(tren5.Title)"><img class="img-crop_trending" src="@tren5.Picture" alt="@tren5.Title"></a>
+                    </figure>
+                    <div class="post-content">
+                        <h5 class="post-title">
+                            <a href="~/news/@tren5.BlogId/@cm.CvString(tren5.Title)">
+                                @cm.Limit(tren5.Brief, 65, "...")
+                            </a>
+                        </h5>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+</div>

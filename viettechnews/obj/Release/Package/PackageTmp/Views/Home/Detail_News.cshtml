@@ -1,0 +1,98 @@
+﻿@model Model.EF.Tintuc
+@using Model.EF;
+@using Model.DAO;
+@using viettechnews.Common;
+
+
+@{
+    var cm = new Catkytu();
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout_Single.cshtml";
+
+    ViewBag.tendm = new DanhmucDao().ListDM_chuyenmuc(Model.CategoryChildId);
+    var dm = (List<Danhmuc>)ViewBag.tendm;
+
+    ViewBag.tinlq = new TintucDao().getnews(Model.CategoryChildId);
+    var lq = (List<Tintuc>)ViewBag.tinlq;
+}
+
+
+<div class="m-post-content m-post-content--nyc">
+    <div class="post-top">
+        @foreach (var tdm in dm)
+        {
+            <i class="fa fa-home"> <a href="/">Home</a> &nbsp;&nbsp;</i><i class="fa fa-flash ">&nbsp;&nbsp;</i><i class="fa fa-folder-o "> @tdm.CategoryName </i>}
+        <hr />
+        <ul class="categories">
+            @foreach (var tdm in dm)
+            {
+                <li><a href="">@tdm.CategoryName</a></li>}
+        </ul>
+        <h2 class="post-title">@Model.Title</h2>
+        <div class="post-meta">
+            <div class="item">
+                <time datetime="2018-02-14 20:00"><i class="fa fa-clock-o"></i>@Model.CreateDate.Value.ToString("dddd, MMMM d, yyyy")  </time>
+                &nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-eye"></i>@Model.ViewNo
+            </div>
+            <div class="item">
+                <a class="social__facebook" href="https://www.facebook.com/sharer/sharer.php?u=https://www.viettechnews.com/news/@Model.BlogId/@cm.CvString(Model.Title)"><i class="fa fa-facebook"></i>Facebook</a>
+            </div>
+            <div class="item">
+                <a class="social__twitter" href="https://twitter.com/share?text=@Model.Title&url=https://www.viettechnews.com/news/@Model.BlogId/@cm.CvString(Model.Title)"><i class="fa fa-twitter"></i>Twitter</a>
+            </div>
+            <div class="item">
+                <a class="social__google-plus" href="https://plus.google.com/share?url=https://www.viettechnews.com/news/@Model.BlogId/@cm.CvString(Model.Title)"><i class="fa fa-google-plus"></i>Google Plus</a>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="entry-content">
+        <h3>@Model.Brief</h3>
+
+        <p>@Html.Raw(Model.Content)</p>
+    </div>
+</div>
+
+<div class="m-post-content m-post-content--nyc">
+    <div class="col-lg-16 content-wrapper">
+        <div class="posts-box3 archive-box">
+            <div class="posts-box3__top">
+                <h4 class="posts-box3__top__title"><span>Tin liên quan</span></h4>
+            </div>
+            <div class="archive-posts">
+                @foreach (var gettin in lq)
+                {
+                    ViewBag.dm = new DanhmucDao().ListDM_chuyenmuc(gettin.CategoryChildId);
+                    var listdm = (List<Danhmuc>)ViewBag.dm;
+
+                    <article class="post-top">
+                        <div class="post-content">
+                            <h4 class="post-title">
+                                <a href="~/news/@gettin.BlogId/@cm.CvString(gettin.Title)">
+                                    @cm.Limit(gettin.Brief, 120, " ..")
+                                </a>
+                            </h4>
+                            <div class="post-meta">
+                                <div class="item">
+                                    <time datetime="2018-02-14 20:00"><i class="fa fa-clock-o"></i>@gettin.CreateDate.Value.ToString("d/M/yyyy HH:mm")  </time>
+                                </div>
+                                <div class="item">
+                                    <i class="fa fa-folder-open"></i>
+                                    <ul class="p-cat">
+                                        @foreach (var ldm in dm)
+                                        {
+                                            <li><a href="">@ldm.CategoryName </a></li>}
+                                    </ul>
+                                </div>
+                                <div class="item">
+                                    <i class="fa fa-eye"></i>@gettin.ViewNo
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <hr />
+                }
+            </div><!--//.posts-list -->
+        </div> <!--//.posts-box  -->
+    </div>
+</div>

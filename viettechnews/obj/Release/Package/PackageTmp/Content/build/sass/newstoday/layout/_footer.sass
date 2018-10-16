@@ -1,0 +1,111 @@
+//footer
+.footer__widgets
+    &.style-1
+        background: #172430
+        padding: 80px 0
+        .col-dev
+            &:before
+                content: ""
+                background: #121d27
+                height: 100%
+                width: 1px
+                position: absolute
+                right: 15px
+                top: 0
+                +media-max(767px)
+                    display: none
+            &:after
+                content: ""
+                background: #1d2b38
+                height: 100%
+                width: 1px
+                position: absolute
+                right: 14px
+                top: 0
+                +media-max(767px)
+                    display: none
+            &:last-child
+                &:before
+                    display: none
+                &:after
+                    display: none
+            &:nth-child(2)
+                &:before
+                    +media-minmax(768px,991px)
+                        display: none
+                &:after
+                    +media-minmax(768px,991px)
+                        display: none
+        .r-dev
+            border-top: 1px solid #121d27
+            border-bottom: 1px solid #1d2b38
+            margin-top: 50px
+            margin-bottom: 40px
+    &.style-2
+        background: #ffffff
+        padding: 80px 0 50px
+    &.style-3
+        background: #ffffff
+        padding: 80px 0 50px
+
+.footer__end
+    padding: 40px 0
+    &--dark
+        background: #0a1118
+    &--brand
+        background: #172430
+.footer__nav
+    ul
+        text-align: center
+        li
+            display: inline-block
+            position: relative
+            padding-right: 14px
+            a
+                color: #5e5e5e
+                font-size: 0.8125rem
+                font-weight: 400
+                &:hover
+                    color: $brand-color
+            &:before
+                content: ''
+                height: 14px
+                width: 1px
+                position: absolute
+                background: #5e5e5e
+                top: 7px
+                right: 4px
+            &:last-child
+                &:before
+                    display: none
+
+.footer__copyright
+    text-align: center
+    p
+        color: #5e5e5e
+        line-height: 1
+        margin-bottom: 0
+        +media-max(767px)
+            text-align: center!important
+
+
+.footer__bottom
+    border-top: 1px solid #e3e3e3
+    background: #ffffff
+    padding: 50px 0
+
+    p
+        margin: 0
+    .social
+        li
+            display: inline-block
+            a
+                height: 30px
+                width: 30px
+                color: #fff
+                text-align: center
+                line-height: 30px
+                margin-bottom: 10px
+                margin-right: 5px
+                &:hover
+                    opacity: .7

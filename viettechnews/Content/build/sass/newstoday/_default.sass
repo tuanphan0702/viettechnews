@@ -1,0 +1,246 @@
+html, body
+  height: 100%
+ul,ol
+  list-style: outside none none
+  margin: 0
+  padding: 0
+input,button
+    &:active,&:focus
+        border: 0
+        outline: 0
+input:focus,textarea:focus,select:focus
+    border: 1px solid #3197d6
+    outline: none
+    box-shadow: none
+a
+    transition: .4s
+    color: $brand-color
+    &:hover,&:focus
+        text-decoration: none
+        color: $brand-color
+figure
+    margin: 0
+
+//media
+img
+    max-width: 100%
+    &.alignleft
+        float: left
+        margin: 5px 30px 40px 0
+    &.alignright
+        float: right
+        margin: 5px 0 40px 30px
+    &.aligncenter
+        clear: both
+        display: block
+        margin-left: auto
+        margin-right: auto
+        margin-bottom: 6px
+.img-block
+    width: 100%
+
+
+.u-font13
+    font-size: 0.8125rem
+
+//border
+.u-radius-3
+    border-radius: 3px
+.u-radius-6
+    border-radius: 6px
+
+//display
+.u-flex
+    display: flex
+.u-flex--wrap
+    flex-wrap: wrap
+.u-flex--content-center
+    justify-content: center
+.u-flex--content-between
+    justify-content: space-between
+.u-flex--item-center
+    align-items: center
+
+//utility
+.clear
+    +clear
+section
+    +clear
++media-min(1230px)
+    .container
+        width: 1200px
+        max-width: 1200px
+.u-relative
+    position: relative
+
+// padding
+.u-padding-t-10
+    padding-top: 10px
+.u-padding-t-15
+    padding-top: 15px
+.u-padding-t-20
+    padding-top: 20px
+.u-padding-t-30
+    padding-top: 30px
+.u-padding-t-50
+    padding-top: 50px
+.u-padding-t-60
+    padding-top: 60px
+.u-padding-tb-25
+    padding-top: 25px
+    padding-bottom: 25px
+.u-padding-tb-20
+    padding-top: 20px
+    padding-bottom: 20px
+.u-padding-tb-40
+    padding-top: 40px
+    padding-bottom: 40px
+.u-padding-tb-60
+    padding-top: 60px
+    padding-bottom: 60px
+.u-padding-t-80
+    padding-top: 80px
+.u-padding-b-0
+    padding-bottom: 0!important
+.u-padding-b-80
+    padding-bottom: 80px
+.u-padding-l-40
+    padding-left: 40px
+.u-padding-r-0
+    padding-right: 0px
+.u-sm-down-padding-l-0
+    +media-max(991px)
+        padding-left: 0
+
+//margin
+.u-margin0
+    margin: 0
+.u-margin-t-0
+    margin-top: 0
+.u-margin-t-5
+    margin-top: 5px
+.u-margin-t-10
+    margin-top: 10px
+.u-margin-t-15
+    margin-top: 15px
+.u-margin-t-20
+    margin-top: 20px
+.u-margin-t-25
+    margin-top: 25px
+.u-margin-t-30
+    margin-top: 30px
+.u-margin-t-35
+    margin-top: 35px
+.u-margin-t-40
+    margin-top: 40px
+.u-margin-t-60
+    margin-top: 60px
+.u-margin-t-80
+    margin-top: 80px
+
+.u-md-down-margin-t-40
+    +media-max(991px)
+        margin-top: 40px
+.u-md-down-margin-b-40
+    +media-max(991px)
+        margin-bottom: 40px
+.u-lst-margin-b-40
+    +media-max(575px)
+        margin-bottom: 40px
+.u-sm-down-margin-b-40
+    +media-max(767px)
+        margin-bottom: 40px
+.u-sm-down-margin-b-30
+    +media-max(767px)
+        margin-bottom: 30px
+.u-sm-down-margin-b-15
+    +media-max(767px)
+        margin-bottom: 15px
+.u-md-down-margin-b-30
+    +media-max(991px)
+        margin-bottom: 30px
+.u-lg-down-margin-b-30
+    +media-max(1230px)
+        margin-bottom: 30px
+
+.u-margin-b-0
+    margin-bottom: 0
+.u-margin-b-5
+    margin-bottom: 5px
+.u-margin-b-7
+    margin-bottom: 7px
+.u-margin-b-8
+    margin-bottom: 8px
+.u-margin-b-10
+    margin-bottom: 10px
+.u-margin-b-15
+    margin-bottom: 15px
+.u-margin-b-20
+    margin-bottom: 20px
+.u-margin-b-25
+    margin-bottom: 25px
+.u-margin-b-30
+    margin-bottom: 30px
+.u-margin-b-35
+    margin-bottom: 35px
+.u-margin-b-40
+    margin-bottom: 40px
+.u-margin-b-45
+    margin-bottom: 45px
+.u-margin-b-50
+    margin-bottom: 50px
+.u-margin-b-60
+    margin-bottom: 60px
+.u-margin-b-65
+    margin-bottom: 65px
+.u-margin-b-70
+    margin-bottom: 70px
+.u-margin-b-75
+    margin-bottom: 75px
+.u-margin-b-80
+    margin-bottom: 80px
+.u-margin-b-95
+    margin-bottom: 95px
+.u-margin-b-100
+    margin-bottom: 100px
+.u-margin-b-150
+    margin-bottom: 150px
+
+.n-magrin-b-6
+    margin-bottom: -6px
+
+.u-margin-l-5
+    margin-left: 5px
+.u-margin-l-10
+    margin-left: 10px
+.u-margin-l-15
+    margin-left: 15px
+
+.u-margin-r-5
+    margin-right: 5px
+.u-margin-r-10
+    margin-right: 10px
+.u-margin-r-15
+    margin-right: 15px
+.u-margin-r-20
+    margin-right: 20px
+.u-margin-r-30
+    margin-right: 30px
+
+.n-margin-lr-3
+    margin-left: -3px
+    margin-right: -3px
+
+// others
+.mfp-wrap,.mfp-bg
+    z-index: 9999999999999999
+
+.u-gray-bg
+    background: $light-gray
+
+.cursor-pointer
+    cursor: pointer
+.modal-open
+    overflow: hidden!important
+.JS-show-menu
+    padding-right: 17px

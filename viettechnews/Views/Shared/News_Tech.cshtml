@@ -1,0 +1,135 @@
+﻿
+@model Model.EF.Tintuc
+@using Model.DAO;
+@using Model.EF;
+@using viettechnews.Common;
+
+@{
+    var cm = new Catkytu();
+
+    ViewBag.tintrait1 = new TintucDao().tintuctrai1_cn();
+    var tintraitop1 = (List<Tintuc>)ViewBag.tintrait1;
+
+    ViewBag.tintrai = new TintucDao().tintuctrai234_cn();
+    var tintrai123 = (List<Tintuc>)ViewBag.tintrai;
+
+    ViewBag.tinphait1 = new TintucDao().tintucphai1_cn();
+    var tinphaitop1 = (List<Tintuc>)ViewBag.tinphait1;
+
+    ViewBag.tinphai = new TintucDao().tintucphai234_cn();
+    var tinphai123 = (List<Tintuc>)ViewBag.tinphai;
+
+
+}
+
+<div data-sticky_column>
+    <div class="posts-box has-cat cat-sports has-load-more">
+        <div class="posts-box__top">
+            <h3 class="posts-box__top__title">Công nghệ</h3>
+            <div class="posts-box__category">
+                <div class="flex-menu-parent">
+                    <ul class="menu flex">
+                        <li><a href="~/tin-cong-nghe/Pcs">PCs</a></li>
+                        <li><a href="~/tin-cong-nghe/Mobile">Mobile</a></li>
+                        <li><a href="tin-cong-nghe/Tablet">Tablet</a></li>
+                        <li><a href="tin-cong-nghe/Camera">Camera</a></li>
+                        <li><a href="tin-cong-nghe/Windows">Windows</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="dual-col-posts">
+            <div class="posts-list has-big-in-top">
+                @foreach (var tintop1 in tintraitop1)
+                {
+                    <article class="post-item">
+                        <figure>
+                            <a href="~/news/@tintop1.BlogId/@cm.CvString(tintop1.Title)"><img class="img-crop_setuptin" src="@tintop1.Picture" alt="@tintop1.Title"></a>
+                        </figure>
+                        <div class="post-content">
+                            <h3 class="post-title">
+                                <a href="~/news/@tintop1.BlogId/@cm.CvString(tintop1.Title)">
+                                    @cm.Limit(tintop1.Title, 70, "...")
+                                </a>
+                            </h3>
+                            <div class="post-meta">
+                                <time datetime="2018-02-14 20:00"><i class="fa fa-clock-o"></i>@tintop1.CreateDate.Value.ToString("d/M/yyyy HH:mm")  </time>
+                                &nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-eye"></i>@tintop1.ViewNo
+                            </div>
+                            <p class="post-excerpt">
+                                @cm.Limit(tintop1.Brief, 110, "...")
+                            </p>
+                        </div>
+                    </article>
+                }
+                @foreach (var lefttin in tintrai123)
+                {
+                    <article class="post-item">
+                        <figure>
+                            <a href="~/news/@lefttin.BlogId/@cm.CvString(lefttin.Title)"><img class="img-crop_trending" src="@lefttin.Picture" alt="@lefttin.Title"></a>
+                        </figure>
+                        <div class="post-content">
+                            <h3 class="post-title">
+                                <a href="~/news/@lefttin.BlogId/@cm.CvString(lefttin.Title)">
+                                    @cm.Limit(lefttin.Title, 60, "...")
+                                </a>
+                            </h3>
+                            <div class="post-meta">
+                                <time datetime="2018-02-14 20:00"><i class="fa fa-clock-o"></i>@lefttin.CreateDate.Value.ToString("d/M/yyyy HH:mm")  </time>
+                                &nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-eye"></i>@lefttin.ViewNo
+                            </div>
+                        </div>
+                    </article>
+                }
+            </div><!--//.posts-list -->
+            <div class="posts-list has-big-in-top">
+                @foreach (var tinphai in tinphaitop1)
+                {
+                    <article class="post-item">
+                        <figure>
+                            <a href="~/news/@tinphai.BlogId/@cm.CvString(tinphai.Title)"><img class="img-crop_setuptin" src="@tinphai.Picture" alt="@tinphai.Title"></a>
+                        </figure>
+                        <div class="post-content">
+                            <h3 class="post-title">
+                                <a href="~/news/@tinphai.BlogId/@cm.CvString(tinphai.Title)">
+                                    @cm.Limit(tinphai.Title, 70, "...")
+                                </a>
+                            </h3>
+                            <div class="post-meta">
+                                <time datetime="2018-02-14 20:00"><i class="fa fa-clock-o"></i>@tinphai.CreateDate.Value.ToString("d/M/yyyy HH:mm")  </time>
+                                &nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-eye"></i>@tinphai.ViewNo
+                            </div>
+                            <p class="post-excerpt">
+                                @cm.Limit(tinphai.Brief, 110, "...")
+                            </p>
+                        </div>
+                    </article>
+                }
+                @foreach (var rigthnew in tinphai123)
+                {
+                    <article class="post-item">
+                        <figure>
+                            <a href="~/news/@rigthnew.BlogId/@cm.CvString(rigthnew.Title)"><img class="img-crop_trending" src="@rigthnew.Picture" alt="@rigthnew.Title"></a>
+                        </figure>
+                        <div class="post-content">
+                            <h3 class="post-title">
+                                <a href="~/news/@rigthnew.BlogId/@cm.CvString(rigthnew.Title)">
+                                    @cm.Limit(rigthnew.Title, 60, "...")
+                                </a>
+                            </h3>
+                            <div class="post-meta">
+                                <time datetime="2018-02-14 20:00"><i class="fa fa-clock-o"></i>@rigthnew.CreateDate.Value.ToString("d/M/yyyy HH:mm")  </time>
+                                &nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-eye"></i>@rigthnew.ViewNo
+                            </div>
+                        </div>
+                    </article>
+                }
+            </div><!--//.posts-list -->
+        </div>
+        <div class="posts-box__bottom">
+            <div class="posts-box__bottom__load-more">
+                <a href="~/tin-cong-nghe">Xem thêm</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,187 @@
+﻿@model Model.EF.Tintuc
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+
+
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-header d-flex align-items-center">
+            <h4>Sửa tin</h4>
+        </div>
+        <div class="card-body">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-horizontal">
+                    @Html.ActionLink("Quay về", "Index")
+                    <hr />
+                    @Html.ValidationSummary(true)
+                    @Html.HiddenFor(model => model.BlogId)
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                @Html.Label("Tiêu đề", new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-10">
+                                @Html.TextBoxFor(model => model.Title, new { @class = "form-control textbox-control" })
+                                @Html.ValidationMessageFor(model => model.Title)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                @Html.Label("Mô tả", new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-10">
+                                @Html.TextAreaFor(model => model.Brief, new { @class = "form-control textbox-control" })
+                                @Html.ValidationMessageFor(model => model.Brief)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                @Html.Label("Nội dung", new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-10">
+                                @Html.TextAreaFor(model => model.Content, new { @class = "form-control textbox-control" })
+                                @Html.ValidationMessageFor(model => model.Content)
+                            </div>
+                            <script type="text/javascript">
+                                CKEDITOR.replace("Content");
+                            </script>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                @Html.Label("Hình Ảnh", new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(model => model.Picture, new { @class = "form-control textbox-control" })
+                                @Html.ValidationMessageFor(model => model.Picture)
+                            </div>
+                            <div class="col-md-2">
+                                <input type="button" id="Browse" value="..." class="btn btn-default" />
+                            </div>
+                            <script>
+                                $("#Browse").click(function () {
+                                    var finder = new CKFinder();
+                                    finder.selectActionFunction = function (fileUrl) {
+                                        $("#Picture").val(fileUrl)
+                                    };
+                                    finder.popup();
+                                });
+                            </script>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                @Html.Label("Ngày đăng", new { @class = "control-label" })
+                            </div>
+                            <div class="col-md-4">
+                                @Html.TextBoxFor(model => model.CreateDate, new { @class = "form-control textbox-control" })
+                                @Html.ValidationMessageFor(model => model.CreateDate)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2">
+                            @Html.Label("Chuyên mục", new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(model => model.CategoryId, new { @class = "form-control textbox-control" })
+                            @Html.ValidationMessageFor(model => model.CategoryId)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2">
+                            @Html.Label("Chuyên mục con", new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(model => model.CategoryChildId, new { @class = "form-control textbox-control" })
+                            @Html.ValidationMessageFor(model => model.CategoryChildId)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2">
+                            @Html.Label("Thẻ Tags", new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(model => model.Tags, new { @class = "form-control textbox-control" })
+                            @Html.ValidationMessageFor(model => model.Tags)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2">
+                            @Html.Label("Lượt xem", new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(model => model.ViewNo, new { @class = "form-control textbox-control" })
+                            @Html.ValidationMessageFor(model => model.ViewNo)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2">
+                            @Html.Label("Trạng thái", new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.CheckBoxFor(model => model.Status)
+                            @Html.ValidationMessageFor(model => model.Status)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2">
+                            @Html.Label("Người tạo", new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(model => model.UserId, new { @class = "form-control textbox-control" })
+                            @Html.ValidationMessageFor(model => model.UserId)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col-md-2">
+                            @Html.Label("Seo title", new { @class = "control-label" })
+                        </div>
+                        <div class="col-md-4">
+                            @Html.TextBoxFor(model => model.Seotitle, new { @class = "form-control textbox-control" })
+                            @Html.ValidationMessageFor(model => model.Seotitle)
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Lưu tin bài" class="btn btn-primary">
+                        </div>
+
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>

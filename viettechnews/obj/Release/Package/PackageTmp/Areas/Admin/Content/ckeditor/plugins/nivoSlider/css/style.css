@@ -1,0 +1,29 @@
+/*
+	Plugin	: Nivo Slider
+	Author	: Michael Janea (www.michaeljanea.com)
+	Version	: 1.5
+*/
+
+#nivoSlider {}
+	#nivoSlider_Container {height:300px; overflow:auto; margin-bottom:1em;}
+	#nivoSlider table {width:100%; border-collapse:collapse;}
+	#nivoSlider th, #nivoSlider td {padding:.5em;}
+	#nivoSlider th {font-weight:bold;}
+	#nivoSlider td {vertical-align:top; position:relative;}
+	#nivoSlider td:nth-child(1) {width:40px;}
+	#nivoSlider td:nth-child(2), #nivoSlider td:nth-child(3) {width:260px;}
+	#nivoSlider td:nth-child(4) {width:280px;}
+	#nivoSlider input[type=text], #nivoSlider textarea {padding:.3em; border:1px solid #ddd; -webkit-border-radius:3px; border-radius:3px; -webkit-box-shadow:inset 0 2px 2px rgba(0,0,0,0.075); box-shadow:inset 0 2px 2px rgba(0,0,0,0.075); background:rgba(0, 0, 0, .01); outline:none;}
+	#nivoSlider input[type=text]:focus, #nivoSlider textarea:focus {border:1px solid #139ff7;}
+	#nivoSlider input[type=text] {width:95%;}
+	#nivoSlider textarea {resize:none; width:95%; height:100px; white-space:pre-wrap;}
+	#nivoSlider .nivoSlider_remove, #nivoSlider .nivoSlider_addNew, #nivoSlider .nivoSlider_up, #nivoSlider .nivoSlider_down, #nivoSlider .nivoSlider_browse, #nivoSlider .nivoSlider_move {font-weight:bold; -webkit-border-radius:3px; border-radius:3px; cursor:pointer;}
+	#nivoSlider .nivoSlider_remove {background:#A94442; padding:.3em .5em; color:#fff;}
+	#nivoSlider .nivoSlider_remove:hover {text-decoration:none;}
+	#nivoSlider .nivoSlider_addNew, #nivoSlider .nivoSlider_up, #nivoSlider .nivoSlider_down, #nivoSlider .nivoSlider_browse, #nivoSlider .nivoSlider_move {float:right; padding:.5em; background:#f3f3f3; border:1px solid #ddd;}
+	#nivoSlider .nivoSlider_browse {padding:.27em .5em; position:absolute; top:.5em; right:.5em;}
+	#nivoSlider .nivoSlider_addNew:hover {text-decoration:underline;}
+	#nivoSlider .nivoSlider_up, #nivoSlider .nivoSlider_down {float:none; padding:.13em .4em;}
+	#nivoSlider .nivoSlider_hidden {display:none;}
+	#nivoSlider img {max-height:100px; max-width:250px;}
+	#nivoSlider .nivoSlider_move {background:url('../icons/move.png') center center no-repeat #f3f3f3; width:11px; height:9px; cursor:move;}
